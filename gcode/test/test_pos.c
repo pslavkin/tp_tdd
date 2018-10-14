@@ -11,5 +11,8 @@ void tearDown(void)
 
 void test_Pos_Reset_At_Init(void)
 {
-    TEST_FAIL_MESSAGE("funciona ceedling!");
+    Reset_Pos();
+    TEST_ASSERT_EQUAL_FLOAT(Pos.X,0);
+    TEST_ASSERT_EQUAL_FLOAT(Pos.Y,0);
+    TEST_ASSERT_EQUAL_FLOAT(Pos.Z,0);
 }
