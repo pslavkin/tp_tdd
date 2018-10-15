@@ -1,4 +1,6 @@
 ---
 - unity.h
+- mock_uart.h
+- parser.h
 - pos.h
 - build/temp/_test_pos.c

@@ -1,5 +1,7 @@
 #include "build/temp/_test_pos.c"
 #include "pos.h"
+#include "parser.h"
+#include "mock_uart.h"
 #include "unity.h"
 
 
@@ -31,19 +33,19 @@ void test_Pos_Reset_At_Init(void)
 
   ((void *)0)
 
-  )), (UNITY_UINT)((UNITY_UINT)(20)));
+  )), (UNITY_UINT)((UNITY_UINT)(22)));
 
    UnityAssertFloatsWithin((UNITY_FLOAT)((UNITY_FLOAT)((Pos.Y)) * (UNITY_FLOAT)(0.00001f)), (UNITY_FLOAT)((UNITY_FLOAT)((Pos.Y))), (UNITY_FLOAT)((UNITY_FLOAT)((0))), ((
 
   ((void *)0)
 
-  )), (UNITY_UINT)((UNITY_UINT)(21)));
+  )), (UNITY_UINT)((UNITY_UINT)(23)));
 
    UnityAssertFloatsWithin((UNITY_FLOAT)((UNITY_FLOAT)((Pos.Z)) * (UNITY_FLOAT)(0.00001f)), (UNITY_FLOAT)((UNITY_FLOAT)((Pos.Z))), (UNITY_FLOAT)((UNITY_FLOAT)((0))), ((
 
   ((void *)0)
 
-  )), (UNITY_UINT)((UNITY_UINT)(22)));
+  )), (UNITY_UINT)((UNITY_UINT)(24)));
 
 }
 
@@ -55,11 +57,7 @@ void test_Validate_XYZ(void)
 
 {
 
-   
-
-  _Bool 
-
-       Ans;
+   uint8_t Ans;
 
    Pos_t Pos;
 
@@ -71,15 +69,11 @@ void test_Validate_XYZ(void)
 
    Ans = Validate_XYZ ( &Pos );
 
-   UnityAssertEqualNumber((UNITY_INT)((Ans)), (UNITY_INT)((
-
-  0
-
-  )), (
+   UnityAssertEqualNumber((UNITY_INT)((XYZ_NUMBERS_INVALID)), (UNITY_INT)((Ans)), (
 
   ((void *)0)
 
-  ), (UNITY_UINT)(34), UNITY_DISPLAY_STYLE_INT);
+  ), (UNITY_UINT)(36), UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -89,15 +83,11 @@ void test_Validate_XYZ(void)
 
    Ans = Validate_XYZ ( &Pos );
 
-   UnityAssertEqualNumber((UNITY_INT)((Ans)), (UNITY_INT)((
-
-  0
-
-  )), (
+   UnityAssertEqualNumber((UNITY_INT)((XYZ_NUMBERS_INVALID)), (UNITY_INT)((Ans)), (
 
   ((void *)0)
 
-  ), (UNITY_UINT)(39), UNITY_DISPLAY_STYLE_INT);
+  ), (UNITY_UINT)(41), UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -107,15 +97,11 @@ void test_Validate_XYZ(void)
 
    Ans = Validate_XYZ ( &Pos );
 
-   UnityAssertEqualNumber((UNITY_INT)((Ans)), (UNITY_INT)((
-
-  0
-
-  )), (
+   UnityAssertEqualNumber((UNITY_INT)((XYZ_NUMBERS_INVALID)), (UNITY_INT)((Ans)), (
 
   ((void *)0)
 
-  ), (UNITY_UINT)(44), UNITY_DISPLAY_STYLE_INT);
+  ), (UNITY_UINT)(46), UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -125,15 +111,11 @@ void test_Validate_XYZ(void)
 
    Ans = Validate_XYZ ( &Pos );
 
-   UnityAssertEqualNumber((UNITY_INT)((Ans)), (UNITY_INT)((
-
-  0
-
-  )), (
+   UnityAssertEqualNumber((UNITY_INT)((XYZ_NUMBERS_INVALID)), (UNITY_INT)((Ans)), (
 
   ((void *)0)
 
-  ), (UNITY_UINT)(49), UNITY_DISPLAY_STYLE_INT);
+  ), (UNITY_UINT)(51), UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -143,15 +125,11 @@ void test_Validate_XYZ(void)
 
    Ans = Validate_XYZ ( &Pos );
 
-   UnityAssertEqualNumber((UNITY_INT)((Ans)), (UNITY_INT)((
-
-  0
-
-  )), (
+   UnityAssertEqualNumber((UNITY_INT)((XYZ_NUMBERS_INVALID)), (UNITY_INT)((Ans)), (
 
   ((void *)0)
 
-  ), (UNITY_UINT)(54), UNITY_DISPLAY_STYLE_INT);
+  ), (UNITY_UINT)(56), UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -161,15 +139,11 @@ void test_Validate_XYZ(void)
 
    Ans = Validate_XYZ ( &Pos );
 
-   UnityAssertEqualNumber((UNITY_INT)((Ans)), (UNITY_INT)((
-
-  0
-
-  )), (
+   UnityAssertEqualNumber((UNITY_INT)((XYZ_NUMBERS_INVALID)), (UNITY_INT)((Ans)), (
 
   ((void *)0)
 
-  ), (UNITY_UINT)(59), UNITY_DISPLAY_STYLE_INT);
+  ), (UNITY_UINT)(61), UNITY_DISPLAY_STYLE_INT);
 
 
 

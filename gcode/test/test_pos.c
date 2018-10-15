@@ -3,6 +3,8 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "unity.h"
+#include "mock_uart.h"
+#include "parser.h"
 #include "pos.h"
 
 void setUp(void)
@@ -25,37 +27,37 @@ void test_Pos_Reset_At_Init(void)
 
 void test_Validate_XYZ(void)
 {
-   bool Ans;
+   uint8_t Ans;
    Pos_t Pos;
 
    Reset_Pos(&Pos);
    Pos.X = MAX_PARAM_VALUE;
    Ans   = Validate_XYZ ( &Pos      );
-   TEST_ASSERT_EQUAL    ( Ans,false );
+   TEST_ASSERT_EQUAL    ( XYZ_NUMBERS_INVALID,Ans );
 
    Reset_Pos(&Pos);
    Pos.Y = MAX_PARAM_VALUE;
    Ans   = Validate_XYZ ( &Pos      );
-   TEST_ASSERT_EQUAL    ( Ans,false );
+   TEST_ASSERT_EQUAL    ( XYZ_NUMBERS_INVALID,Ans );
 
    Reset_Pos(&Pos);
    Pos.Z = MAX_PARAM_VALUE;
    Ans   = Validate_XYZ ( &Pos      );
-   TEST_ASSERT_EQUAL    ( Ans,false );
+   TEST_ASSERT_EQUAL    ( XYZ_NUMBERS_INVALID,Ans );
 
    Reset_Pos(&Pos);
    Pos.X = MIN_PARAM_VALUE;
    Ans   = Validate_XYZ ( &Pos      );
-   TEST_ASSERT_EQUAL    ( Ans,false );
+   TEST_ASSERT_EQUAL    ( XYZ_NUMBERS_INVALID,Ans );
 
    Reset_Pos(&Pos);
    Pos.Y = MIN_PARAM_VALUE;
    Ans   = Validate_XYZ ( &Pos      );
-   TEST_ASSERT_EQUAL    ( Ans,false );
+   TEST_ASSERT_EQUAL    ( XYZ_NUMBERS_INVALID,Ans );
 
    Reset_Pos(&Pos);
    Pos.Z = MIN_PARAM_VALUE;
    Ans   = Validate_XYZ ( &Pos      );
-   TEST_ASSERT_EQUAL    ( Ans,false );
+   TEST_ASSERT_EQUAL    ( XYZ_NUMBERS_INVALID,Ans );
 
 }

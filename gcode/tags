@@ -95,8 +95,9 @@ CMock_Init	build/test/runners/test_uart_runner.c	/^static void CMock_Init(void)$
 CMock_Verify	build/test/runners/test_parser_runner.c	/^static void CMock_Verify(void)$/;"	f	file:
 CMock_Verify	build/test/runners/test_uart_runner.c	/^static void CMock_Verify(void)$/;"	f	file:
 CODE_TOO_LONG	src/parser.h	/^   CODE_TOO_LONG        ,$/;"	e	enum:ERROR_CODES
+COMMAND_CODES	src/parser.h	/^enum COMMAND_CODES$/;"	g
 COPYING	src/parser.h	/^   COPYING$/;"	e	enum:__anon6
-C_Index	src/parser.h	/^   uint16_t C_Index   ;$/;"	m	struct:__anon7
+C_Index	src/parser.h	/^   uint16_t                C_Index   ;$/;"	m	struct:__anon7
 Cacheinator	vendor/ceedling/lib/ceedling/cacheinator.rb	/^class Cacheinator$/;"	c
 CacheinatorHelper	vendor/ceedling/lib/ceedling/cacheinator_helper.rb	/^class CacheinatorHelper$/;"	c
 CallOrder	build/test/mocks/mock_uart.c	/^  int CallOrder;$/;"	m	struct:_CMOCK_Give_Next_Line_CALL_INSTANCE	file:
@@ -104,10 +105,12 @@ Catch	vendor/ceedling/vendor/c_exception/lib/CException.h	83;"	d
 Ceedling	vendor/ceedling/lib/ceedling.rb	/^module Ceedling$/;"	m
 Ceedling	vendor/ceedling/lib/ceedling/version.rb	/^module Ceedling$/;"	m
 CmockBuilder	vendor/ceedling/lib/ceedling/cmock_builder.rb	/^class CmockBuilder$/;"	c
-Code_Index	src/parser.h	/^   uint8_t  Code_Index;$/;"	m	struct:__anon7
-Codes	src/parser.h	/^   char     Codes[MAX_CODES_PER_LINE][MAX_CODE_LENGTH];$/;"	m	struct:__anon7
+Code_Count	src/parser.h	/^   uint8_t                 Code_Count;$/;"	m	struct:__anon7
+Code_Index	src/parser.h	/^   uint8_t                 Code_Index;$/;"	m	struct:__anon7
+Codes	src/parser.h	/^   char                    Codes[MAX_CODES_PER_LINE][MAX_CODE_LENGTH];$/;"	m	struct:__anon7
 Codes_t	src/parser.h	/^} Codes_t;$/;"	t	typeref:struct:__anon7
 ColourCommandLine	vendor/ceedling/vendor/unity/auto/colour_prompt.rb	/^class ColourCommandLine$/;"	c
+Command	src/parser.h	/^   enum COMMAND_CODES      Command   ;$/;"	m	struct:__anon7	typeref:enum:__anon7::COMMAND_CODES
 CommandHooks	vendor/ceedling/plugins/command_hooks/lib/command_hooks.rb	/^class CommandHooks < Plugin$/;"	c
 Configurator	vendor/ceedling/lib/ceedling/configurator.rb	/^class Configurator$/;"	c
 ConfiguratorBuilder	vendor/ceedling/lib/ceedling/configurator_builder.rb	/^class ConfiguratorBuilder$/;"	c
@@ -136,7 +139,8 @@ ERROR_CODES	src/parser.h	/^enum ERROR_CODES$/;"	g
 ErbWrapper	vendor/ceedling/lib/ceedling/erb_wrapper.rb	/^class ErbWrapper$/;"	c
 Exception	vendor/ceedling/vendor/c_exception/lib/CException.h	/^  CEXCEPTION_T volatile Exception;$/;"	m	struct:__anon1
 ExitTry	vendor/ceedling/vendor/c_exception/lib/CException.h	103;"	d
-Extract_Commands	src/parser.c	/^bool Extract_Commands(Codes_t* C)$/;"	f
+Extract_Commands	src/parser.c	/^int8_t Extract_Commands(Codes_t* C)$/;"	f
+Extract_Info	src/parser.c	/^int8_t Extract_Info(Codes_t* C)$/;"	f
 FactoryDef	vendor/ceedling/vendor/diy/lib/diy/factory.rb	/^  class FactoryDef #:nodoc:$/;"	c	class:DIY
 FactoryFactory	vendor/ceedling/vendor/diy/lib/diy/factory.rb	/^  class FactoryFactory$/;"	c	class:DIY
 FakeFunctionFramework	vendor/ceedling/plugins/fake_function_framework/lib/fake_function_framework.rb	/^class FakeFunctionFramework < Plugin$/;"	c
@@ -149,6 +153,8 @@ FileSystemUtils	vendor/ceedling/lib/ceedling/file_system_utils.rb	/^class FileSy
 FileSystemWrapper	vendor/ceedling/lib/ceedling/file_system_wrapper.rb	/^class FileSystemWrapper$/;"	c
 FileWrapper	vendor/ceedling/lib/ceedling/file_wrapper.rb	/^class FileWrapper$/;"	c
 Flaginator	vendor/ceedling/lib/ceedling/flaginator.rb	/^class Flaginator$/;"	c
+G0_COMMAND	src/parser.h	/^   G0_COMMAND    = 0 ,$/;"	e	enum:COMMAND_CODES
+G1_COMMAND	src/parser.h	/^   G1_COMMAND        ,$/;"	e	enum:COMMAND_CODES
 Gcov	vendor/ceedling/plugins/gcov/lib/gcov.rb	/^class Gcov < Plugin$/;"	c
 Generator	vendor/ceedling/lib/ceedling/generator.rb	/^class Generator$/;"	c
 GeneratorHelper	vendor/ceedling/lib/ceedling/generator_helper.rb	/^class GeneratorHelper$/;"	c
@@ -176,24 +182,30 @@ GlobalVerifyOrder	build/test/runners/test_parser_runner.c	/^int GlobalVerifyOrde
 GlobalVerifyOrder	build/test/runners/test_pos_runner.c	/^int GlobalVerifyOrder;$/;"	v
 GlobalVerifyOrder	build/test/runners/test_uart_runner.c	/^int GlobalVerifyOrder;$/;"	v
 Hash	vendor/ceedling/vendor/deep_merge/lib/deep_merge.rb	/^class Hash$/;"	c	class:DeepMerge.deep_merge
+INVALID_COMMAND	src/parser.h	/^   INVALID_COMMAND,$/;"	e	enum:COMMAND_CODES
+INVALID_XYZ	src/parser.h	/^   INVALID_XYZ,$/;"	e	enum:COMMAND_CODES
 Inc_C_Index	src/parser.c	/^bool Inc_C_Index(Codes_t* C)$/;"	f
 Inc_Codes_Index	src/parser.c	/^bool Inc_Codes_Index(Codes_t* C)$/;"	f
 Inc_L_Index	src/parser.c	/^bool Inc_L_Index(Codes_t* C)$/;"	f
 Infl	vendor/ceedling/vendor/diy/lib/diy.rb	/^  module Infl #:nodoc:#$/;"	m
+Info_Parser	src/parser.c	/^int8_t Info_Parser(Codes_t* C)$/;"	f
+Init_Info_Parser	src/parser.c	/^void Init_Info_Parser(Codes_t* C)$/;"	f
 Init_Parser	src/parser.c	/^int8_t Init_Parser(Codes_t* C,char* L)$/;"	f
 InvalidParameter	vendor/ceedling/vendor/deep_merge/lib/deep_merge.rb	/^  class InvalidParameter < StandardError; end$/;"	c	class:DeepMerge
 IsStringInBiggerString	vendor/ceedling/vendor/unity/src/unity.c	/^int IsStringInBiggerString(const char* longstring, const char* shortstring)$/;"	f
 JunitTestsReport	vendor/ceedling/plugins/junit_tests_report/lib/junit_tests_report.rb	/^class JunitTestsReport < Plugin$/;"	c
-L	src/parser.h	/^   char*    L         ;$/;"	m	struct:__anon7
-LINE_END	src/parser.h	/^   LINE_END$/;"	e	enum:ERROR_CODES
+L	src/parser.h	/^   char*                   L         ;$/;"	m	struct:__anon7
+LINE_END	src/parser.h	/^   LINE_END             ,$/;"	e	enum:ERROR_CODES
 LINE_TOO_LONG	src/parser.h	/^   LINE_TOO_LONG        ,$/;"	e	enum:ERROR_CODES
-L_Index	src/parser.h	/^   uint16_t L_Index   ;$/;"	m	struct:__anon7
+L_Index	src/parser.h	/^   uint16_t                L_Index   ;$/;"	m	struct:__anon7
 LineNumber	build/test/mocks/mock_uart.c	/^  UNITY_LINE_TYPE LineNumber;$/;"	m	struct:_CMOCK_Give_Next_Line_CALL_INSTANCE	file:
 Loginator	vendor/ceedling/lib/ceedling/loginator.rb	/^class Loginator$/;"	c
 Lookup	vendor/ceedling/vendor/diy/lib/diy.rb	/^  class Lookup #:nodoc:$/;"	c
-MAX_CODES_PER_LINE	src/parser.h	9;"	d
-MAX_CODE_LENGTH	src/parser.h	10;"	d
-MAX_LINE_LENGTH	src/parser.h	8;"	d
+MAX_CODES_PER_LINE	src/parser.h	10;"	d
+MAX_CODE_LENGTH	src/parser.h	11;"	d
+MAX_LINE_LENGTH	src/parser.h	9;"	d
+MAX_PARAM_VALUE	src/pos.h	6;"	d
+MIN_PARAM_VALUE	src/pos.h	5;"	d
 MakefileLoader	vendor/ceedling/lib/ceedling/makefile.rb	/^  class MakefileLoader$/;"	c	class:Rake
 MethodDef	vendor/ceedling/vendor/diy/lib/diy.rb	/^  class MethodDef #:nodoc:$/;"	c
 Mock	build/test/mocks/mock_uart.c	/^} Mock;$/;"	v	typeref:struct:mock_uartInstance	file:
@@ -216,7 +228,7 @@ PluginManager	vendor/ceedling/lib/ceedling/plugin_manager.rb	/^class PluginManag
 PluginManagerHelper	vendor/ceedling/lib/ceedling/plugin_manager_helper.rb	/^class PluginManagerHelper$/;"	c
 PluginReportinator	vendor/ceedling/lib/ceedling/plugin_reportinator.rb	/^class PluginReportinator$/;"	c
 PluginReportinatorHelper	vendor/ceedling/lib/ceedling/plugin_reportinator_helper.rb	/^class PluginReportinatorHelper$/;"	c
-Pos	src/pos.c	/^Pos_t Pos;$/;"	v
+Pos	src/parser.h	/^   Pos_t                   Pos       ;$/;"	m	struct:__anon7
 Pos_t	src/pos.h	/^} Pos_t;$/;"	t	typeref:struct:__anon8
 Preprocessinator	vendor/ceedling/lib/ceedling/preprocessinator.rb	/^class Preprocessinator$/;"	c
 PreprocessinatorExtractor	vendor/ceedling/lib/ceedling/preprocessinator_extractor.rb	/^class PreprocessinatorExtractor$/;"	c
@@ -246,9 +258,9 @@ ReleaseInvoker	vendor/ceedling/lib/ceedling/release_invoker.rb	/^class ReleaseIn
 ReleaseInvokerHelper	vendor/ceedling/lib/ceedling/release_invoker_helper.rb	/^class ReleaseInvokerHelper$/;"	c
 Reportinator	vendor/ceedling/lib/ceedling/reportinator.rb	/^class Reportinator$/;"	c
 RequestReload	vendor/ceedling/lib/ceedling/target_loader.rb	/^  class RequestReload < Exception; end$/;"	c	class:TargetLoader
-Reset_Pos	src/pos.c	/^void Reset_Pos(void)$/;"	f
+Reset_Pos	src/pos.c	/^void Reset_Pos(Pos_t* Pos)$/;"	f
 ReturnVal	build/test/mocks/mock_uart.c	/^  char* ReturnVal;$/;"	m	struct:_CMOCK_Give_Next_Line_CALL_INSTANCE	file:
-S	src/parser.h	/^   Parser_State_e S;$/;"	m	struct:__anon7
+S	src/parser.h	/^   Parser_State_e          S         ;$/;"	m	struct:__anon7
 SKIPING	src/parser.h	/^   SKIPING=0,$/;"	e	enum:__anon6
 Setupinator	vendor/ceedling/lib/ceedling/setupinator.rb	/^class Setupinator$/;"	c
 ShellExecutionException	vendor/ceedling/lib/ceedling/tool_executor.rb	/^class ShellExecutionException < RuntimeError$/;"	c
@@ -264,9 +276,6 @@ Subprojects	vendor/ceedling/plugins/subprojects/lib/subprojects.rb	/^class Subpr
 Symbol	vendor/ceedling/lib/ceedling/configurator_setup.rb	/^class Symbol$/;"	c
 SystemUtils	vendor/ceedling/lib/ceedling/system_utils.rb	/^class SystemUtils$/;"	c
 SystemWrapper	vendor/ceedling/lib/ceedling/system_wrapper.rb	/^class SystemWrapper$/;"	c
-T	build/test/cache/test_parser.c	/^char T[10][20 +10];$/;"	v
-T	build/test/preprocess/files/test_parser.c	/^char T[10][20 +10];$/;"	v
-T	test/test_parser.c	/^char T[10][MAX_CODE_LENGTH+10];$/;"	v
 TEST_ABORT	vendor/ceedling/vendor/unity/src/unity_internals.h	637;"	d
 TEST_ABORT	vendor/ceedling/vendor/unity/src/unity_internals.h	640;"	d
 TEST_ASSERT	vendor/ceedling/vendor/unity/src/unity.h	120;"	d
@@ -1064,14 +1073,17 @@ UnityTestSummary	vendor/ceedling/vendor/unity/auto/unity_test_summary.rb	/^class
 UnityTestSummary	vendor/ceedling/vendor/unity/auto/unity_to_junit.py	/^class UnityTestSummary:$/;"	c
 UnityToJUnit	vendor/ceedling/vendor/unity/auto/stylize_as_junit.rb	/^class UnityToJUnit$/;"	c
 UnityVerbosity	vendor/ceedling/vendor/unity/src/unity.c	/^int UnityVerbosity            = 1;$/;"	v
-Vector	build/test/cache/test_parser.c	/^char* Vector[]= {$/;"	v
-Vector	build/test/preprocess/files/test_parser.c	/^char* Vector[]= {$/;"	v
-Vector	test/test_parser.c	/^char* Vector[]= {$/;"	v
+VALID_XYZ	src/parser.h	/^   VALID_XYZ,$/;"	e	enum:COMMAND_CODES
+Validate	src/pos.c	/^bool Validate(float N)$/;"	f
+Validate_XYZ	src/pos.c	/^uint8_t Validate_XYZ(Pos_t* Pos)$/;"	f
 Verbosinator	vendor/ceedling/lib/ceedling/verbosinator.rb	/^class Verbosinator$/;"	c
 Verbosity	vendor/ceedling/lib/ceedling/constants.rb	/^class Verbosity$/;"	c
 Version	vendor/ceedling/lib/ceedling/version.rb	/^  module Version$/;"	m	class:Ceedling
 WarningsReport	vendor/ceedling/plugins/warnings_report/lib/warnings_report.rb	/^class WarningsReport < Plugin$/;"	c
 X	src/pos.h	/^   float X;$/;"	m	struct:__anon8
+XYZ_NUMBERS_INVALID	src/parser.h	/^   XYZ_NUMBERS_INVALID$/;"	e	enum:COMMAND_CODES
+XYZ_NUMBERS_VALID	src/parser.h	/^   XYZ_NUMBERS_VALID,$/;"	e	enum:COMMAND_CODES
+XYZ_Parser	src/parser.c	/^int8_t XYZ_Parser(Codes_t* C)$/;"	f
 XmlTestsReport	vendor/ceedling/plugins/xml_tests_report/lib/xml_tests_report.rb	/^class XmlTestsReport < Plugin$/;"	c
 Y	src/pos.h	/^   float Y;$/;"	m	struct:__anon8
 YamlWrapper	vendor/ceedling/lib/ceedling/yaml_wrapper.rb	/^class YamlWrapper$/;"	c
@@ -1813,16 +1825,33 @@ tearDown	vendor/ceedling/plugins/fake_function_framework/examples/fff_example/te
 tearDown	vendor/ceedling/vendor/unity/src/unity.h	/^    UNITY_WEAK_ATTRIBUTE void tearDown(void) { }$/;"	f
 tearDown	vendor/ceedling/vendor/unity/src/unity.h	/^    void tearDown(void) { }$/;"	f
 tearDown	vendor/ceedling/vendor/unity/src/unity.h	46;"	d
+test_Extract_Commands_Codes_Too_Long	build/test/cache/test_parser.c	/^void test_Extract_Commands_Codes_Too_Long(void)$/;"	f
+test_Extract_Commands_Codes_Too_Long	build/test/preprocess/files/test_parser.c	/^void test_Extract_Commands_Codes_Too_Long(void)$/;"	f
+test_Extract_Commands_Codes_Too_Long	test/test_parser.c	/^void test_Extract_Commands_Codes_Too_Long(void)$/;"	f
+test_Extract_Commands_Max_Codes_Per_Line	build/test/cache/test_parser.c	/^void test_Extract_Commands_Max_Codes_Per_Line(void)$/;"	f
+test_Extract_Commands_Max_Codes_Per_Line	build/test/preprocess/files/test_parser.c	/^void test_Extract_Commands_Max_Codes_Per_Line(void)$/;"	f
+test_Extract_Commands_Max_Codes_Per_Line	test/test_parser.c	/^void test_Extract_Commands_Max_Codes_Per_Line(void)$/;"	f
 test_Extract_Commands_Max_Line_Length	build/test/cache/test_parser.c	/^void test_Extract_Commands_Max_Line_Length(void)$/;"	f
 test_Extract_Commands_Max_Line_Length	build/test/preprocess/files/test_parser.c	/^void test_Extract_Commands_Max_Line_Length(void)$/;"	f
 test_Extract_Commands_Max_Line_Length	test/test_parser.c	/^void test_Extract_Commands_Max_Line_Length(void)$/;"	f
+test_Extract_Commands_Vector	build/test/cache/test_parser.c	/^void test_Extract_Commands_Vector(void)$/;"	f
+test_Extract_Commands_Vector	build/test/preprocess/files/test_parser.c	/^void test_Extract_Commands_Vector(void)$/;"	f
 test_Extract_Commands_Vector	test/test_parser.c	/^void test_Extract_Commands_Vector(void)$/;"	f
+test_Extract_Info	build/test/cache/test_parser.c	/^void test_Extract_Info(void)$/;"	f
+test_Extract_Info	build/test/preprocess/files/test_parser.c	/^void test_Extract_Info(void)$/;"	f
+test_Extract_Info	test/test_parser.c	/^void test_Extract_Info(void)$/;"	f
 test_Give_Next_Line	build/test/cache/test_uart.c	/^void test_Give_Next_Line(void)$/;"	f
 test_Give_Next_Line	build/test/preprocess/files/test_uart.c	/^void test_Give_Next_Line(void)$/;"	f
 test_Give_Next_Line	test/test_uart.c	/^void test_Give_Next_Line(void)$/;"	f
+test_Info_Parser_Valid_Codes	build/test/cache/test_parser.c	/^void test_Info_Parser_Valid_Codes(void)$/;"	f
+test_Info_Parser_Valid_Codes	build/test/preprocess/files/test_parser.c	/^void test_Info_Parser_Valid_Codes(void)$/;"	f
+test_Info_Parser_Valid_Codes	test/test_parser.c	/^void test_Info_Parser_Valid_Codes(void)$/;"	f
 test_Pos_Reset_At_Init	build/test/cache/test_pos.c	/^void test_Pos_Reset_At_Init(void)$/;"	f
 test_Pos_Reset_At_Init	build/test/preprocess/files/test_pos.c	/^void test_Pos_Reset_At_Init(void)$/;"	f
 test_Pos_Reset_At_Init	test/test_pos.c	/^void test_Pos_Reset_At_Init(void)$/;"	f
+test_Validate_XYZ	build/test/cache/test_pos.c	/^void test_Validate_XYZ(void)$/;"	f
+test_Validate_XYZ	build/test/preprocess/files/test_pos.c	/^void test_Validate_XYZ(void)$/;"	f
+test_Validate_XYZ	test/test_pos.c	/^void test_Validate_XYZ(void)$/;"	f
 test_failed	vendor/ceedling/vendor/unity/auto/parse_output.rb	/^  def test_failed(array)$/;"	f	class:ParseOutput
 test_failed_unity_fixture	vendor/ceedling/vendor/unity/auto/parse_output.rb	/^  def test_failed_unity_fixture(array)$/;"	f	class:ParseOutput
 test_foo	vendor/ceedling/plugins/fake_function_framework/examples/fff_example/test/test_foo.c	/^void test_foo(void)$/;"	f

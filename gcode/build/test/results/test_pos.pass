@@ -4,10 +4,10 @@
   :file: test_pos.c
 :successes:
 - :test: test_Pos_Reset_At_Init
-  :line: 16
+  :line: 18
   :message: ''
 - :test: test_Validate_XYZ
-  :line: 26
+  :line: 28
   :message: ''
 :failures: []
 :ignores: []
@@ -17,4 +17,4 @@
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.0013367640058277175
+:time: 0.001333214997430332

@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include "parser.h"
 #include "pos.h"
 
 
@@ -19,9 +20,11 @@ bool Validate(float N)
    else
       return false;
 }
-bool Validate_XYZ(Pos_t* Pos)
+uint8_t Validate_XYZ(Pos_t* Pos)
 {
-   return Validate(Pos->X) && Validate(Pos->Y) && Validate(Pos->Z);
+   return Validate(Pos->X) && Validate(Pos->Y) && Validate(Pos->Z)? \
+      XYZ_NUMBERS_VALID: \
+      XYZ_NUMBERS_INVALID;
 }
 
 

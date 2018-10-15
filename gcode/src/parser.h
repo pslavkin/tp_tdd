@@ -16,7 +16,9 @@ enum COMMAND_CODES
    G1_COMMAND        ,
    INVALID_XYZ,
    VALID_XYZ,
-   INVALID_COMMAND
+   INVALID_COMMAND,
+   XYZ_NUMBERS_VALID,
+   XYZ_NUMBERS_INVALID
 };
 enum ERROR_CODES
 {
@@ -37,7 +39,7 @@ typedef struct {
    uint8_t                 Code_Count;
    char*                   L         ;
    uint16_t                L_Index   ;
-   enum COMMAND_CODES      Command   ;
+   uint8_t                 Command   ;
    Pos_t                   Pos       ;
    Parser_State_e          S         ;
 } Codes_t;

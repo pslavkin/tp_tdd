@@ -2,5 +2,6 @@
 - cmock.h
 - unity.h
 - mock_uart.h
+- pos.h
 - parser.h
 - build/temp/_test_parser.c

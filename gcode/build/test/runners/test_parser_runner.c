@@ -101,12 +101,12 @@ int main(void)
 {
   suite_setup();
   UnityBegin("test_parser.c");
-  RUN_TEST(test_Extract_Commands_Vector, 21);
-  RUN_TEST(test_Extract_Commands_Max_Line_Length, 55);
-  RUN_TEST(test_Extract_Commands_Max_Codes_Per_Line, 67);
-  RUN_TEST(test_Extract_Commands_Codes_Too_Long, 79);
-  RUN_TEST(test_Info_Parser_Valid_Codes, 91);
-  RUN_TEST(test_Extract_Info, 125);
+  RUN_TEST(test_Extract_Commands_Vector, 22);
+  RUN_TEST(test_Extract_Commands_Max_Line_Length, 56);
+  RUN_TEST(test_Extract_Commands_Max_Codes_Per_Line, 68);
+  RUN_TEST(test_Extract_Commands_Codes_Too_Long, 80);
+  RUN_TEST(test_Info_Parser_Valid_Codes, 92);
+  RUN_TEST(test_Extract_Info, 126);
 
   CMock_Guts_MemFreeFinal();
   return suite_teardown(UnityEnd());

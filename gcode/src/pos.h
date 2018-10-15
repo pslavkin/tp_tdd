@@ -6,7 +6,6 @@
 #define MAX_PARAM_VALUE +1000
 
 
-
 typedef struct {
    float X;
    float Y;
@@ -14,6 +13,6 @@ typedef struct {
 } Pos_t;
 
 void     Reset_Pos    ( Pos_t* Pos );
-bool     Validate_XYZ ( Pos_t* Pos );
+uint8_t  Validate_XYZ ( Pos_t* Pos );
 
 #endif // _POS_H

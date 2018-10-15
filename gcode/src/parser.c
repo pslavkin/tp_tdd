@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "uart.h"
+#include "pos.h"
 #include "parser.h"
 
 
@@ -11,8 +12,8 @@ int8_t Extract_Commands(Codes_t* C)
 {
    int8_t   Ans;
    char*    L;
-   L=Give_Next_Line ( );
-   Init_Parser ( C,L );
+   L=Give_Next_Line (     );
+   Init_Parser      ( C,L );
    while((Ans=Parse_Byte(C))==0)
       ;
    C->Code_Count = C->Code_Index;
@@ -114,6 +115,10 @@ int8_t Extract_Info(Codes_t* C)
       C->Command=Ans;
       Ans=XYZ_Parser(C);
       if(Ans!=INVALID_XYZ) {
+         Ans=Validate_XYZ(&(C->Pos));
+         if(Ans==XYZ_NUMBERS_VALID) {
+            //linea acepctada
+         }
       }
    }
    return Ans;

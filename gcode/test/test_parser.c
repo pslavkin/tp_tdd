@@ -7,6 +7,7 @@
 #include "cmock.h"
 #include "unity.h"
 #include "mock_uart.h"
+#include "pos.h"
 #include "parser.h"
 
 void setUp(void)
@@ -138,11 +139,15 @@ void test_Extract_Info(void)
    Give_Next_Line_ExpectAndReturn  ( Test_Line                          );
    Ans=Extract_Commands            ( &C                                 );
    Ans=Extract_Info                ( &C                                 );
-   TEST_ASSERT_EQUAL_MESSAGE       ( VALID_XYZ ,Ans     ,"VALID_XYZ"    );
-   TEST_ASSERT_EQUAL_FLOAT_MESSAGE ( 1.1       ,C.Pos.X ,"Conversion X" );
-   TEST_ASSERT_EQUAL_FLOAT_MESSAGE ( 2.1       ,C.Pos.Y ,"Conversion X" );
-   TEST_ASSERT_EQUAL_FLOAT_MESSAGE ( -4.1234   ,C.Pos.Z ,"Conversion X" );
+   TEST_ASSERT_EQUAL_MESSAGE       ( XYZ_NUMBERS_VALID ,Ans     ,"XYZ_NUMBERS_VALID" );
+   TEST_ASSERT_EQUAL_FLOAT_MESSAGE ( 1.1               ,C.Pos.X ,"Conversion X"                );
+   TEST_ASSERT_EQUAL_FLOAT_MESSAGE ( 2.1               ,C.Pos.Y ,"Conversion X"                );
+   TEST_ASSERT_EQUAL_FLOAT_MESSAGE ( -4.1234           ,C.Pos.Z ,"Conversion X"                );
 
 
-
+   strcpy                          ( Test_Line,"G0 X1.1 Y2000.1 Z-4.1234"  );
+   Give_Next_Line_ExpectAndReturn  ( Test_Line                          );
+   Ans=Extract_Commands            ( &C                                 );
+   Ans=Extract_Info                ( &C                                 );
+   TEST_ASSERT_EQUAL_MESSAGE       ( XYZ_NUMBERS_INVALID ,Ans     ,"XYZ_NUMBERS_VALID" );
 }
