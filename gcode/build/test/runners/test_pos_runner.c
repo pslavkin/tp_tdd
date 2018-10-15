@@ -36,6 +36,7 @@ char* GlobalOrderError;
 extern void setUp(void);
 extern void tearDown(void);
 extern void test_Pos_Reset_At_Init(void);
+extern void test_Validate_XYZ(void);
 
 
 /*=======Suite Setup=====*/
@@ -71,6 +72,7 @@ int main(void)
   suite_setup();
   UnityBegin("test_pos.c");
   RUN_TEST(test_Pos_Reset_At_Init, 16);
+  RUN_TEST(test_Validate_XYZ, 26);
 
   return suite_teardown(UnityEnd());
 }
