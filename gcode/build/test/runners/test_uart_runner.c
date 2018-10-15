@@ -96,7 +96,7 @@ int main(void)
 {
   suite_setup();
   UnityBegin("test_uart.c");
-  RUN_TEST(test_Give_Next_Line, 19);
+  RUN_TEST(test_Give_Next_Line, 17);
 
   CMock_Guts_MemFreeFinal();
   return suite_teardown(UnityEnd());

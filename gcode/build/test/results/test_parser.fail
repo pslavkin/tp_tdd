@@ -2,16 +2,25 @@
 :source:
   :path: test
   :file: test_parser.c
-:successes: []
+:successes:
+- :test: test_Extract_Commands_Vector
+  :line: 20
+  :message: ''
 :failures:
-- :test: test_Extract_Commands
-  :line: 28
-  :message: Expected 'Z56.79' Was 'Z56.78'. falla adrede parametro z
+- :test: test_Extract_Commands_Max_Line_Length
+  :line: 66
+  :message: LINE_TOO_LONG
+- :test: test_Extract_Commands_Max_Codes_Per_Line
+  :line: 80
+  :message: TOO_MANY_CODES
+- :test: test_Extract_Commands_Codes_Too_Long
+  :line: 97
+  :message: CODE_TOO_LONG
 :ignores: []
 :counts:
-  :total: 1
-  :passed: 0
-  :failed: 1
+  :total: 4
+  :passed: 1
+  :failed: 3
   :ignored: 0
 :stdout: []
-:time: 0.001649117999477312
+:time: 0.0013508440024452284

@@ -28,6 +28,8 @@ CMOCK_ARG_NONE	vendor/ceedling/vendor/cmock/src/cmock.h	21;"	d
 CMOCK_FRAMEWORK_H	vendor/ceedling/vendor/cmock/src/cmock.h	8;"	d
 CMOCK_FRAMEWORK_INTERNALS_H	vendor/ceedling/vendor/cmock/src/cmock_internals.h	8;"	d
 CMOCK_GUTS_NONE	vendor/ceedling/vendor/cmock/src/cmock.h	17;"	d
+CMOCK_Give_Next_Line_CALLBACK	build/test/mocks/mock_uart.h	/^typedef char* (* CMOCK_Give_Next_Line_CALLBACK)(int cmock_num_calls);$/;"	t
+CMOCK_Give_Next_Line_CALL_INSTANCE	build/test/mocks/mock_uart.c	/^} CMOCK_Give_Next_Line_CALL_INSTANCE;$/;"	t	typeref:struct:_CMOCK_Give_Next_Line_CALL_INSTANCE	file:
 CMOCK_MEM_ALIGN	vendor/ceedling/vendor/cmock/src/cmock_internals.h	65;"	d
 CMOCK_MEM_ALIGN	vendor/ceedling/vendor/cmock/src/cmock_internals.h	67;"	d
 CMOCK_MEM_ALIGN	vendor/ceedling/vendor/cmock/src/cmock_internals.h	69;"	d
@@ -69,7 +71,10 @@ CMockStringMismatch	vendor/ceedling/vendor/cmock/src/cmock.c	/^const char* CMock
 CMockStringOutOfMemory	vendor/ceedling/vendor/cmock/src/cmock.c	/^const char* CMockStringOutOfMemory = "CMock has run out of memory. Please allocate more.";$/;"	v
 CMockStringPtrIsNULL	vendor/ceedling/vendor/cmock/src/cmock.c	/^const char* CMockStringPtrIsNULL   = "Pointer is NULL.";$/;"	v
 CMockStringPtrPreExp	vendor/ceedling/vendor/cmock/src/cmock.c	/^const char* CMockStringPtrPreExp   = "ReturnThruPtr called before Expect.";$/;"	v
+CMockString_Give_Next_Line	build/test/mocks/mock_uart.c	/^static const char* CMockString_Give_Next_Line = "Give_Next_Line";$/;"	v	file:
 CMockUnityHelperParser	vendor/ceedling/vendor/cmock/lib/cmock_unityhelper_parser.rb	/^class CMockUnityHelperParser$/;"	c
+CMock_Destroy	build/test/runners/test_parser_runner.c	/^static void CMock_Destroy(void)$/;"	f	file:
+CMock_Destroy	build/test/runners/test_uart_runner.c	/^static void CMock_Destroy(void)$/;"	f	file:
 CMock_Guts_Buffer	vendor/ceedling/vendor/cmock/src/cmock.c	/^static unsigned char*         CMock_Guts_Buffer = NULL;$/;"	v	file:
 CMock_Guts_Buffer	vendor/ceedling/vendor/cmock/src/cmock.c	30;"	d	file:
 CMock_Guts_BufferArray	vendor/ceedling/vendor/cmock/src/cmock.c	/^static CMOCK_MEM_INDEX_TYPE   CMock_Guts_BufferArray[(CMOCK_MEM_SIZE + CMOCK_MEM_INDEX_SIZE - 1) \/ CMOCK_MEM_INDEX_SIZE];$/;"	v	file:
@@ -85,12 +90,23 @@ CMock_Guts_MemFreeAll	vendor/ceedling/vendor/cmock/src/cmock.c	/^void CMock_Guts
 CMock_Guts_MemFreeFinal	vendor/ceedling/vendor/cmock/src/cmock.c	/^void CMock_Guts_MemFreeFinal(void)$/;"	f
 CMock_Guts_MemNew	vendor/ceedling/vendor/cmock/src/cmock.c	/^CMOCK_MEM_INDEX_TYPE CMock_Guts_MemNew(CMOCK_MEM_INDEX_TYPE size)$/;"	f
 CMock_Guts_MemNext	vendor/ceedling/vendor/cmock/src/cmock.c	/^CMOCK_MEM_INDEX_TYPE CMock_Guts_MemNext(CMOCK_MEM_INDEX_TYPE previous_item_index)$/;"	f
+CMock_Init	build/test/runners/test_parser_runner.c	/^static void CMock_Init(void)$/;"	f	file:
+CMock_Init	build/test/runners/test_uart_runner.c	/^static void CMock_Init(void)$/;"	f	file:
+CMock_Verify	build/test/runners/test_parser_runner.c	/^static void CMock_Verify(void)$/;"	f	file:
+CMock_Verify	build/test/runners/test_uart_runner.c	/^static void CMock_Verify(void)$/;"	f	file:
+CODE_TOO_LONG	src/parser.h	/^   CODE_TOO_LONG        ,$/;"	e	enum:ERROR_CODES
+COPYING	src/parser.h	/^   COPYING$/;"	e	enum:__anon6
+C_Index	src/parser.h	/^   uint16_t C_Index   ;$/;"	m	struct:__anon7
 Cacheinator	vendor/ceedling/lib/ceedling/cacheinator.rb	/^class Cacheinator$/;"	c
 CacheinatorHelper	vendor/ceedling/lib/ceedling/cacheinator_helper.rb	/^class CacheinatorHelper$/;"	c
+CallOrder	build/test/mocks/mock_uart.c	/^  int CallOrder;$/;"	m	struct:_CMOCK_Give_Next_Line_CALL_INSTANCE	file:
 Catch	vendor/ceedling/vendor/c_exception/lib/CException.h	83;"	d
 Ceedling	vendor/ceedling/lib/ceedling.rb	/^module Ceedling$/;"	m
 Ceedling	vendor/ceedling/lib/ceedling/version.rb	/^module Ceedling$/;"	m
 CmockBuilder	vendor/ceedling/lib/ceedling/cmock_builder.rb	/^class CmockBuilder$/;"	c
+Code_Index	src/parser.h	/^   uint8_t  Code_Index;$/;"	m	struct:__anon7
+Codes	src/parser.h	/^   char     Codes[MAX_CODES_PER_LINE][MAX_CODE_LENGTH];$/;"	m	struct:__anon7
+Codes_t	src/parser.h	/^} Codes_t;$/;"	t	typeref:struct:__anon7
 ColourCommandLine	vendor/ceedling/vendor/unity/auto/colour_prompt.rb	/^class ColourCommandLine$/;"	c
 CommandHooks	vendor/ceedling/plugins/command_hooks/lib/command_hooks.rb	/^class CommandHooks < Plugin$/;"	c
 Configurator	vendor/ceedling/lib/ceedling/configurator.rb	/^class Configurator$/;"	c
@@ -116,9 +132,11 @@ DeepMerge	vendor/ceedling/vendor/deep_merge/lib/deep_merge.rb	/^  def DeepMerge:
 DeepMerge	vendor/ceedling/vendor/deep_merge/lib/deep_merge.rb	/^module DeepMerge$/;"	m
 DeepMergeHash	vendor/ceedling/vendor/deep_merge/lib/deep_merge.rb	/^  module DeepMergeHash$/;"	m	class:DeepMerge
 Dependinator	vendor/ceedling/lib/ceedling/dependinator.rb	/^class Dependinator$/;"	c
+ERROR_CODES	src/parser.h	/^enum ERROR_CODES$/;"	g
 ErbWrapper	vendor/ceedling/lib/ceedling/erb_wrapper.rb	/^class ErbWrapper$/;"	c
 Exception	vendor/ceedling/vendor/c_exception/lib/CException.h	/^  CEXCEPTION_T volatile Exception;$/;"	m	struct:__anon1
 ExitTry	vendor/ceedling/vendor/c_exception/lib/CException.h	103;"	d
+Extract_Commands	src/parser.c	/^bool Extract_Commands(Codes_t* C)$/;"	f
 FactoryDef	vendor/ceedling/vendor/diy/lib/diy/factory.rb	/^  class FactoryDef #:nodoc:$/;"	c	class:DIY
 FactoryFactory	vendor/ceedling/vendor/diy/lib/diy/factory.rb	/^  class FactoryFactory$/;"	c	class:DIY
 FakeFunctionFramework	vendor/ceedling/plugins/fake_function_framework/lib/fake_function_framework.rb	/^class FakeFunctionFramework < Plugin$/;"	c
@@ -137,7 +155,17 @@ GeneratorHelper	vendor/ceedling/lib/ceedling/generator_helper.rb	/^class Generat
 GeneratorTestResults	vendor/ceedling/lib/ceedling/generator_test_results.rb	/^class GeneratorTestResults$/;"	c
 GeneratorTestResultsSanityChecker	vendor/ceedling/lib/ceedling/generator_test_results_sanity_checker.rb	/^class GeneratorTestResultsSanityChecker$/;"	c
 GeneratorTestRunner	vendor/ceedling/lib/ceedling/generator_test_runner.rb	/^class GeneratorTestRunner$/;"	c
-Give_Next_Line	src/uart.c	/^char* Give_Next_Line(void)$/;"	f
+Give_Next_Line	build/test/mocks/mock_uart.c	/^char* Give_Next_Line(void)$/;"	f
+Give_Next_Line_CMockExpectAndReturn	build/test/mocks/mock_uart.c	/^void Give_Next_Line_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, char* cmock_to_return)$/;"	f
+Give_Next_Line_CMockIgnoreAndReturn	build/test/mocks/mock_uart.c	/^void Give_Next_Line_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, char* cmock_to_return)$/;"	f
+Give_Next_Line_CallInstance	build/test/mocks/mock_uart.c	/^  CMOCK_MEM_INDEX_TYPE Give_Next_Line_CallInstance;$/;"	m	struct:mock_uartInstance	file:
+Give_Next_Line_CallbackCalls	build/test/mocks/mock_uart.c	/^  int Give_Next_Line_CallbackCalls;$/;"	m	struct:mock_uartInstance	file:
+Give_Next_Line_CallbackFunctionPointer	build/test/mocks/mock_uart.c	/^  CMOCK_Give_Next_Line_CALLBACK Give_Next_Line_CallbackFunctionPointer;$/;"	m	struct:mock_uartInstance	file:
+Give_Next_Line_ExpectAndReturn	build/test/mocks/mock_uart.h	28;"	d
+Give_Next_Line_FinalReturn	build/test/mocks/mock_uart.c	/^  char* Give_Next_Line_FinalReturn;$/;"	m	struct:mock_uartInstance	file:
+Give_Next_Line_IgnoreAndReturn	build/test/mocks/mock_uart.h	26;"	d
+Give_Next_Line_IgnoreBool	build/test/mocks/mock_uart.c	/^  int Give_Next_Line_IgnoreBool;$/;"	m	struct:mock_uartInstance	file:
+Give_Next_Line_StubWithCallback	build/test/mocks/mock_uart.c	/^void Give_Next_Line_StubWithCallback(CMOCK_Give_Next_Line_CALLBACK Callback)$/;"	f
 GlobalExpectCount	build/test/runners/test_parser_runner.c	/^int GlobalExpectCount;$/;"	v
 GlobalExpectCount	build/test/runners/test_pos_runner.c	/^int GlobalExpectCount;$/;"	v
 GlobalExpectCount	build/test/runners/test_uart_runner.c	/^int GlobalExpectCount;$/;"	v
@@ -148,14 +176,27 @@ GlobalVerifyOrder	build/test/runners/test_parser_runner.c	/^int GlobalVerifyOrde
 GlobalVerifyOrder	build/test/runners/test_pos_runner.c	/^int GlobalVerifyOrder;$/;"	v
 GlobalVerifyOrder	build/test/runners/test_uart_runner.c	/^int GlobalVerifyOrder;$/;"	v
 Hash	vendor/ceedling/vendor/deep_merge/lib/deep_merge.rb	/^class Hash$/;"	c	class:DeepMerge.deep_merge
+Inc_C_Index	src/parser.c	/^bool Inc_C_Index(Codes_t* C)$/;"	f
+Inc_Codes_Index	src/parser.c	/^bool Inc_Codes_Index(Codes_t* C)$/;"	f
+Inc_L_Index	src/parser.c	/^bool Inc_L_Index(Codes_t* C)$/;"	f
 Infl	vendor/ceedling/vendor/diy/lib/diy.rb	/^  module Infl #:nodoc:#$/;"	m
+Init_Parser	src/parser.c	/^int8_t Init_Parser(Codes_t* C,char* L)$/;"	f
 InvalidParameter	vendor/ceedling/vendor/deep_merge/lib/deep_merge.rb	/^  class InvalidParameter < StandardError; end$/;"	c	class:DeepMerge
 IsStringInBiggerString	vendor/ceedling/vendor/unity/src/unity.c	/^int IsStringInBiggerString(const char* longstring, const char* shortstring)$/;"	f
 JunitTestsReport	vendor/ceedling/plugins/junit_tests_report/lib/junit_tests_report.rb	/^class JunitTestsReport < Plugin$/;"	c
+L	src/parser.h	/^   char*    L         ;$/;"	m	struct:__anon7
+LINE_END	src/parser.h	/^   LINE_END$/;"	e	enum:ERROR_CODES
+LINE_TOO_LONG	src/parser.h	/^   LINE_TOO_LONG        ,$/;"	e	enum:ERROR_CODES
+L_Index	src/parser.h	/^   uint16_t L_Index   ;$/;"	m	struct:__anon7
+LineNumber	build/test/mocks/mock_uart.c	/^  UNITY_LINE_TYPE LineNumber;$/;"	m	struct:_CMOCK_Give_Next_Line_CALL_INSTANCE	file:
 Loginator	vendor/ceedling/lib/ceedling/loginator.rb	/^class Loginator$/;"	c
 Lookup	vendor/ceedling/vendor/diy/lib/diy.rb	/^  class Lookup #:nodoc:$/;"	c
+MAX_CODES_PER_LINE	src/parser.h	9;"	d
+MAX_CODE_LENGTH	src/parser.h	10;"	d
+MAX_LINE_LENGTH	src/parser.h	8;"	d
 MakefileLoader	vendor/ceedling/lib/ceedling/makefile.rb	/^  class MakefileLoader$/;"	c	class:Rake
 MethodDef	vendor/ceedling/vendor/diy/lib/diy.rb	/^  class MethodDef #:nodoc:$/;"	c
+Mock	build/test/mocks/mock_uart.c	/^} Mock;$/;"	v	typeref:struct:mock_uartInstance	file:
 ModuleGenerator	vendor/ceedling/plugins/module_generator/lib/module_generator.rb	/^class ModuleGenerator < Plugin$/;"	c
 Namespace	vendor/ceedling/vendor/diy/lib/diy.rb	/^  class Namespace #:nodoc:#$/;"	c
 NamespaceError	vendor/ceedling/vendor/diy/lib/diy.rb	/^  class NamespaceError < RuntimeError #:nodoc:#$/;"	c
@@ -167,6 +208,8 @@ NumberOfTests	vendor/ceedling/vendor/unity/src/unity_internals.h	/^    UNITY_COU
 Object	vendor/ceedling/lib/ceedling/system_utils.rb	/^class Object$/;"	c
 ObjectDef	vendor/ceedling/vendor/diy/lib/diy.rb	/^  class ObjectDef #:nodoc:$/;"	c
 ParseOutput	vendor/ceedling/vendor/unity/auto/parse_output.rb	/^class ParseOutput$/;"	c
+Parse_Byte	src/parser.c	/^int8_t Parse_Byte(Codes_t* C)$/;"	f
+Parser_State_e	src/parser.h	/^} Parser_State_e;$/;"	t	typeref:enum:__anon6
 Plugin	vendor/ceedling/lib/ceedling/plugin.rb	/^class Plugin$/;"	c
 PluginBuilder	vendor/ceedling/lib/ceedling/plugin_builder.rb	/^class PluginBuilder$/;"	c
 PluginManager	vendor/ceedling/lib/ceedling/plugin_manager.rb	/^class PluginManager$/;"	c
@@ -174,7 +217,7 @@ PluginManagerHelper	vendor/ceedling/lib/ceedling/plugin_manager_helper.rb	/^clas
 PluginReportinator	vendor/ceedling/lib/ceedling/plugin_reportinator.rb	/^class PluginReportinator$/;"	c
 PluginReportinatorHelper	vendor/ceedling/lib/ceedling/plugin_reportinator_helper.rb	/^class PluginReportinatorHelper$/;"	c
 Pos	src/pos.c	/^Pos_t Pos;$/;"	v
-Pos_t	src/pos.h	/^} Pos_t;$/;"	t	typeref:struct:__anon6
+Pos_t	src/pos.h	/^} Pos_t;$/;"	t	typeref:struct:__anon8
 Preprocessinator	vendor/ceedling/lib/ceedling/preprocessinator.rb	/^class Preprocessinator$/;"	c
 PreprocessinatorExtractor	vendor/ceedling/lib/ceedling/preprocessinator_extractor.rb	/^class PreprocessinatorExtractor$/;"	c
 PreprocessinatorFileHandler	vendor/ceedling/lib/ceedling/preprocessinator_file_handler.rb	/^class PreprocessinatorFileHandler$/;"	c
@@ -204,6 +247,9 @@ ReleaseInvokerHelper	vendor/ceedling/lib/ceedling/release_invoker_helper.rb	/^cl
 Reportinator	vendor/ceedling/lib/ceedling/reportinator.rb	/^class Reportinator$/;"	c
 RequestReload	vendor/ceedling/lib/ceedling/target_loader.rb	/^  class RequestReload < Exception; end$/;"	c	class:TargetLoader
 Reset_Pos	src/pos.c	/^void Reset_Pos(void)$/;"	f
+ReturnVal	build/test/mocks/mock_uart.c	/^  char* ReturnVal;$/;"	m	struct:_CMOCK_Give_Next_Line_CALL_INSTANCE	file:
+S	src/parser.h	/^   Parser_State_e S;$/;"	m	struct:__anon7
+SKIPING	src/parser.h	/^   SKIPING=0,$/;"	e	enum:__anon6
 Setupinator	vendor/ceedling/lib/ceedling/setupinator.rb	/^class Setupinator$/;"	c
 ShellExecutionException	vendor/ceedling/lib/ceedling/tool_executor.rb	/^class ShellExecutionException < RuntimeError$/;"	c
 StdErrRedirect	vendor/ceedling/lib/ceedling/constants.rb	/^class StdErrRedirect$/;"	c
@@ -218,6 +264,9 @@ Subprojects	vendor/ceedling/plugins/subprojects/lib/subprojects.rb	/^class Subpr
 Symbol	vendor/ceedling/lib/ceedling/configurator_setup.rb	/^class Symbol$/;"	c
 SystemUtils	vendor/ceedling/lib/ceedling/system_utils.rb	/^class SystemUtils$/;"	c
 SystemWrapper	vendor/ceedling/lib/ceedling/system_wrapper.rb	/^class SystemWrapper$/;"	c
+T	build/test/cache/test_parser.c	/^char T[10][20 +10];$/;"	v
+T	build/test/preprocess/files/test_parser.c	/^char T[10][20 +10];$/;"	v
+T	test/test_parser.c	/^char T[10][MAX_CODE_LENGTH+10];$/;"	v
 TEST_ABORT	vendor/ceedling/vendor/unity/src/unity_internals.h	637;"	d
 TEST_ABORT	vendor/ceedling/vendor/unity/src/unity_internals.h	640;"	d
 TEST_ASSERT	vendor/ceedling/vendor/unity/src/unity.h	120;"	d
@@ -569,6 +618,7 @@ TEST_ONLY	vendor/ceedling/vendor/unity/src/unity.h	105;"	d
 TEST_PASS	vendor/ceedling/vendor/unity/src/unity.h	109;"	d
 TEST_PROTECT	vendor/ceedling/vendor/unity/src/unity_internals.h	636;"	d
 TEST_PROTECT	vendor/ceedling/vendor/unity/src/unity_internals.h	639;"	d
+TOO_MANY_CODES	src/parser.h	/^   TOO_MANY_CODES = -10 ,$/;"	e	enum:ERROR_CODES
 TargetLoader	vendor/ceedling/lib/ceedling/target_loader.rb	/^module TargetLoader$/;"	m
 TaskInvoker	vendor/ceedling/lib/ceedling/task_invoker.rb	/^class TaskInvoker$/;"	c
 TeamcityTestsReport	vendor/ceedling/plugins/teamcity_tests_report/lib/teamcity_tests_report.rb	/^class TeamcityTestsReport < Plugin$/;"	c
@@ -659,9 +709,9 @@ UNITY_GREATER_OR_EQUAL	vendor/ceedling/vendor/unity/src/unity_internals.h	/^    
 UNITY_GREATER_THAN	vendor/ceedling/vendor/unity/src/unity_internals.h	/^    UNITY_GREATER_THAN     = 2,$/;"	e	enum:__anon3
 UNITY_IGNORE_AND_BAIL	vendor/ceedling/vendor/unity/src/unity.c	18;"	d	file:
 UNITY_INCLUDE_DOUBLE	vendor/ceedling/vendor/unity/src/unity_internals.h	219;"	d
-UNITY_INCLUDE_SETUP_STUBS	build/test/runners/test_parser_runner.c	23;"	d	file:
+UNITY_INCLUDE_SETUP_STUBS	build/test/runners/test_parser_runner.c	27;"	d	file:
 UNITY_INCLUDE_SETUP_STUBS	build/test/runners/test_pos_runner.c	23;"	d	file:
-UNITY_INCLUDE_SETUP_STUBS	build/test/runners/test_uart_runner.c	23;"	d	file:
+UNITY_INCLUDE_SETUP_STUBS	build/test/runners/test_uart_runner.c	27;"	d	file:
 UNITY_INCLUDE_SETUP_STUBS	vendor/ceedling/vendor/unity/src/unity.c	7;"	d	file:
 UNITY_INT	vendor/ceedling/vendor/unity/src/unity_internals.h	/^    typedef UNITY_INT32 UNITY_INT;$/;"	t
 UNITY_INT	vendor/ceedling/vendor/unity/src/unity_internals.h	/^    typedef UNITY_INT64 UNITY_INT;$/;"	t
@@ -1014,17 +1064,22 @@ UnityTestSummary	vendor/ceedling/vendor/unity/auto/unity_test_summary.rb	/^class
 UnityTestSummary	vendor/ceedling/vendor/unity/auto/unity_to_junit.py	/^class UnityTestSummary:$/;"	c
 UnityToJUnit	vendor/ceedling/vendor/unity/auto/stylize_as_junit.rb	/^class UnityToJUnit$/;"	c
 UnityVerbosity	vendor/ceedling/vendor/unity/src/unity.c	/^int UnityVerbosity            = 1;$/;"	v
+Vector	build/test/cache/test_parser.c	/^char* Vector[]= {$/;"	v
+Vector	build/test/preprocess/files/test_parser.c	/^char* Vector[]= {$/;"	v
+Vector	test/test_parser.c	/^char* Vector[]= {$/;"	v
 Verbosinator	vendor/ceedling/lib/ceedling/verbosinator.rb	/^class Verbosinator$/;"	c
 Verbosity	vendor/ceedling/lib/ceedling/constants.rb	/^class Verbosity$/;"	c
 Version	vendor/ceedling/lib/ceedling/version.rb	/^  module Version$/;"	m	class:Ceedling
 WarningsReport	vendor/ceedling/plugins/warnings_report/lib/warnings_report.rb	/^class WarningsReport < Plugin$/;"	c
-X	src/pos.h	/^   float X;$/;"	m	struct:__anon6
+X	src/pos.h	/^   float X;$/;"	m	struct:__anon8
 XmlTestsReport	vendor/ceedling/plugins/xml_tests_report/lib/xml_tests_report.rb	/^class XmlTestsReport < Plugin$/;"	c
-Y	src/pos.h	/^   float Y;$/;"	m	struct:__anon6
+Y	src/pos.h	/^   float Y;$/;"	m	struct:__anon8
 YamlWrapper	vendor/ceedling/lib/ceedling/yaml_wrapper.rb	/^class YamlWrapper$/;"	c
-Z	src/pos.h	/^   float Z;$/;"	m	struct:__anon6
+Z	src/pos.h	/^   float Z;$/;"	m	struct:__anon8
 []	vendor/ceedling/lib/ceedling/rake_wrapper.rb	/^  def [](task)$/;"	f	class:RakeWrapper
 _CEXCEPTION_H	vendor/ceedling/vendor/c_exception/lib/CException.h	2;"	d
+_CMOCK_Give_Next_Line_CALL_INSTANCE	build/test/mocks/mock_uart.c	/^typedef struct _CMOCK_Give_Next_Line_CALL_INSTANCE$/;"	s	file:
+_MOCK_UART_H	build/test/mocks/mock_uart.h	3;"	d
 _PARSER_H	src/parser.h	2;"	d
 _POS_H	src/pos.h	2;"	d
 _UART_H	src/uart.h	2;"	d
@@ -1452,6 +1507,10 @@ mock_interfaces	vendor/ceedling/vendor/cmock/lib/cmock_generator_plugin_expect_a
 mock_interfaces	vendor/ceedling/vendor/cmock/lib/cmock_generator_plugin_ignore.rb	/^  def mock_interfaces(function)$/;"	f	class:CMockGeneratorPluginIgnore
 mock_interfaces	vendor/ceedling/vendor/cmock/lib/cmock_generator_plugin_ignore_arg.rb	/^  def mock_interfaces(function)$/;"	f	class:CMockGeneratorPluginIgnoreArg
 mock_interfaces	vendor/ceedling/vendor/cmock/lib/cmock_generator_plugin_return_thru_ptr.rb	/^  def mock_interfaces(function)$/;"	f	class:CMockGeneratorPluginReturnThruPtr
+mock_uartInstance	build/test/mocks/mock_uart.c	/^static struct mock_uartInstance$/;"	s	file:
+mock_uart_Destroy	build/test/mocks/mock_uart.c	/^void mock_uart_Destroy(void)$/;"	f
+mock_uart_Init	build/test/mocks/mock_uart.c	/^void mock_uart_Init(void)$/;"	f
+mock_uart_Verify	build/test/mocks/mock_uart.c	/^void mock_uart_Verify(void)$/;"	f
 mock_verify	vendor/ceedling/vendor/cmock/lib/cmock_generator_plugin_callback.rb	/^  def mock_verify(function)$/;"	f	class:CMockGeneratorPluginCallback
 mock_verify	vendor/ceedling/vendor/cmock/lib/cmock_generator_plugin_expect.rb	/^  def mock_verify(function)$/;"	f	class:CMockGeneratorPluginExpect
 mock_verify	vendor/ceedling/vendor/cmock/lib/cmock_generator_plugin_ignore.rb	/^  def mock_verify(function)$/;"	f	class:CMockGeneratorPluginIgnore
@@ -1754,6 +1813,13 @@ tearDown	vendor/ceedling/plugins/fake_function_framework/examples/fff_example/te
 tearDown	vendor/ceedling/vendor/unity/src/unity.h	/^    UNITY_WEAK_ATTRIBUTE void tearDown(void) { }$/;"	f
 tearDown	vendor/ceedling/vendor/unity/src/unity.h	/^    void tearDown(void) { }$/;"	f
 tearDown	vendor/ceedling/vendor/unity/src/unity.h	46;"	d
+test_Extract_Commands_Max_Line_Length	build/test/cache/test_parser.c	/^void test_Extract_Commands_Max_Line_Length(void)$/;"	f
+test_Extract_Commands_Max_Line_Length	build/test/preprocess/files/test_parser.c	/^void test_Extract_Commands_Max_Line_Length(void)$/;"	f
+test_Extract_Commands_Max_Line_Length	test/test_parser.c	/^void test_Extract_Commands_Max_Line_Length(void)$/;"	f
+test_Extract_Commands_Vector	test/test_parser.c	/^void test_Extract_Commands_Vector(void)$/;"	f
+test_Give_Next_Line	build/test/cache/test_uart.c	/^void test_Give_Next_Line(void)$/;"	f
+test_Give_Next_Line	build/test/preprocess/files/test_uart.c	/^void test_Give_Next_Line(void)$/;"	f
+test_Give_Next_Line	test/test_uart.c	/^void test_Give_Next_Line(void)$/;"	f
 test_Pos_Reset_At_Init	build/test/cache/test_pos.c	/^void test_Pos_Reset_At_Init(void)$/;"	f
 test_Pos_Reset_At_Init	build/test/preprocess/files/test_pos.c	/^void test_Pos_Reset_At_Init(void)$/;"	f
 test_Pos_Reset_At_Init	test/test_pos.c	/^void test_Pos_Reset_At_Init(void)$/;"	f
@@ -1769,16 +1835,10 @@ test_givenTheUserHasTypedSleep_whenItIsTimeToCheckTheKeyboard_theDisplayIsPowere
 test_ignored	vendor/ceedling/vendor/unity/auto/parse_output.rb	/^  def test_ignored(array)$/;"	f	class:ParseOutput
 test_ignored_unity_fixture	vendor/ceedling/vendor/unity/auto/parse_output.rb	/^  def test_ignored_unity_fixture(array)$/;"	f	class:ParseOutput
 test_invoked?	vendor/ceedling/lib/ceedling/task_invoker.rb	/^  def test_invoked?$/;"	f	class:TaskInvoker
-test_parser_NeedToImplement	build/test/cache/test_parser.c	/^void test_parser_NeedToImplement(void)$/;"	f
-test_parser_NeedToImplement	build/test/preprocess/files/test_parser.c	/^void test_parser_NeedToImplement(void)$/;"	f
-test_parser_NeedToImplement	test/test_parser.c	/^void test_parser_NeedToImplement(void)$/;"	f
 test_passed	vendor/ceedling/vendor/unity/auto/parse_output.rb	/^  def test_passed(array)$/;"	f	class:ParseOutput
 test_passed_unity_fixture	vendor/ceedling/vendor/unity/auto/parse_output.rb	/^  def test_passed_unity_fixture(array)$/;"	f	class:ParseOutput
 test_results_error_handler	vendor/ceedling/lib/ceedling/generator_helper.rb	/^  def test_results_error_handler(executable, shell_result)$/;"	f	class:GeneratorHelper
 test_suite_verify	vendor/ceedling/vendor/unity/auto/parse_output.rb	/^  def test_suite_verify(test_suite_name)$/;"	f	class:ParseOutput
-test_uart_Give_Next_Line	build/test/cache/test_uart.c	/^void test_uart_Give_Next_Line(void)$/;"	f
-test_uart_Give_Next_Line	build/test/preprocess/files/test_uart.c	/^void test_uart_Give_Next_Line(void)$/;"	f
-test_uart_Give_Next_Line	test/test_uart.c	/^void test_uart_Give_Next_Line(void)$/;"	f
 test_whenTheDeviceIsReset_thenTheStatusLedIsTurnedOff	vendor/ceedling/plugins/fake_function_framework/examples/fff_example/test/test_event_processor.c	/^test_whenTheDeviceIsReset_thenTheStatusLedIsTurnedOff()$/;"	f
 test_whenTheModeSelectButtonIsPressed_thenTheDisplayModeIsCycled	vendor/ceedling/plugins/fake_function_framework/examples/fff_example/test/test_event_processor.c	/^test_whenTheModeSelectButtonIsPressed_thenTheDisplayModeIsCycled(void)$/;"	f
 test_whenThePowerReadingIsLessThan5_thenTheStatusLedIsNotTurnedOn	vendor/ceedling/plugins/fake_function_framework/examples/fff_example/test/test_event_processor.c	/^test_whenThePowerReadingIsLessThan5_thenTheStatusLedIsNotTurnedOn(void)$/;"	f

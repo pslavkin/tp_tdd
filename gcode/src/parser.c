@@ -6,7 +6,7 @@
 #include "parser.h"
 
 
-bool Extract_Commands(Codes_t* C)
+int8_t Extract_Commands(Codes_t* C)
 {
    int8_t   Ans;
    char*    L;

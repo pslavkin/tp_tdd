@@ -4,7 +4,7 @@
   :file: test_uart.c
 :successes:
 - :test: test_Give_Next_Line
-  :line: 19
+  :line: 17
   :message: ''
 :failures: []
 :ignores: []
@@ -14,4 +14,4 @@
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.0013278800033731386
+:time: 0.0013295210083015263

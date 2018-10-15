@@ -7,7 +7,7 @@
 
 #define MAX_LINE_LENGTH    100
 #define MAX_CODES_PER_LINE 10
-#define MAX_CODE_LENGTH    10
+#define MAX_CODE_LENGTH    20
 
 enum ERROR_CODES
 {
@@ -30,7 +30,7 @@ typedef struct {
    Parser_State_e S;
 } Codes_t;
 
-bool     Extract_Commands ( Codes_t* C         );
+int8_t   Extract_Commands ( Codes_t* C         );
 int8_t   Init_Parser      ( Codes_t* C,char* L );
 int8_t   Parse_Byte       ( Codes_t* C         );
 
