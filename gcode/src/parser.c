@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include "uart.h"
 #include "parser.h"
@@ -108,8 +109,13 @@ int8_t Extract_Info(Codes_t* C)
 {
    int8_t   Ans;
    Init_Info_Parser ( C );
-   while((Ans=Info_Parser(C))==EMPTY_COMMAND)
-      ;
+   Ans=Info_Parser(C);
+   if(Ans!=INVALID_COMMAND) {
+      C->Command=Ans;
+      Ans=XYZ_Parser(C);
+      if(Ans!=INVALID_XYZ) {
+      }
+   }
    return Ans;
 }
 
@@ -121,7 +127,7 @@ void Init_Info_Parser(Codes_t* C)
 
 int8_t Info_Parser(Codes_t* C)
 {
-   int8_t Ans=EMPTY_COMMAND;
+   int8_t Ans;
    char B=C->Codes[C->Code_Index][C->C_Index];
    switch(B) {
       case 'G':
@@ -130,10 +136,14 @@ int8_t Info_Parser(Codes_t* C)
          switch(B) {
             case '0':
                C->Code_Index++;
+               C->C_Index=0;
+               C->Code_Count--;
                Ans=G0_COMMAND;
                break;
             case '1':
                C->Code_Index++;
+               C->C_Index=0;
+               C->Code_Count--;
                Ans=G1_COMMAND;
                break;
             default:
@@ -144,6 +154,40 @@ int8_t Info_Parser(Codes_t* C)
       default:
          Ans=INVALID_COMMAND;
          break;
+   }
+   return Ans;
+}
+
+int8_t XYZ_Parser(Codes_t* C)
+{
+   int8_t Ans=VALID_XYZ;
+   while(C->Code_Count>0) {
+      C->Code_Count--;
+      char B=C->Codes[C->Code_Index][C->C_Index];
+      switch(B) {
+         case 'X':
+            C->C_Index++;
+            C->Pos.X=strtof(&C->Codes[C->Code_Index][C->C_Index],NULL);
+            C->Code_Index++;
+            C->C_Index=0;
+            break;
+         case 'Y':
+            C->C_Index++;
+            C->Pos.Y=strtof(&C->Codes[C->Code_Index][C->C_Index],NULL);
+            C->Code_Index++;
+            C->C_Index=0;
+            break;
+         case 'Z':
+            C->C_Index++;
+            C->Pos.Z=strtof(&C->Codes[C->Code_Index][C->C_Index],NULL);
+            C->Code_Index++;
+            C->C_Index=0;
+            break;
+         default:
+            Ans=INVALID_XYZ;
+            return Ans;
+            break;
+      }
    }
    return Ans;
 }

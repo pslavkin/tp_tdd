@@ -63,7 +63,7 @@ void test_Extract_Commands_Vector(void)
 
       strcpy(Test_Line,Vector[i]);
 
-      Give_Next_Line_CMockExpectAndReturn(40, Test_Line);
+      Give_Next_Line_CMockExpectAndReturn(41, Test_Line);
 
       Ans=Extract_Commands(&C);
 
@@ -73,49 +73,49 @@ void test_Extract_Commands_Vector(void)
 
      ((void *)0)
 
-     ), (UNITY_UINT)(43));
+     ), (UNITY_UINT)(44));
 
       UnityAssertEqualString((const char*)((T[1])), (const char*)((C.Codes[1])), (
 
      ((void *)0)
 
-     ), (UNITY_UINT)(44));
+     ), (UNITY_UINT)(45));
 
       UnityAssertEqualString((const char*)((T[2])), (const char*)((C.Codes[2])), (
 
      ((void *)0)
 
-     ), (UNITY_UINT)(45));
+     ), (UNITY_UINT)(46));
 
       UnityAssertEqualString((const char*)((T[3])), (const char*)((C.Codes[3])), (
 
      ((void *)0)
 
-     ), (UNITY_UINT)(46));
+     ), (UNITY_UINT)(47));
 
       UnityAssertEqualString((const char*)((T[4])), (const char*)((C.Codes[4])), (
 
      ((void *)0)
 
-     ), (UNITY_UINT)(47));
+     ), (UNITY_UINT)(48));
 
       UnityAssertEqualString((const char*)((T[5])), (const char*)((C.Codes[5])), (
 
      ((void *)0)
 
-     ), (UNITY_UINT)(48));
+     ), (UNITY_UINT)(49));
 
       UnityAssertEqualString((const char*)((T[6])), (const char*)((C.Codes[6])), (
 
      ((void *)0)
 
-     ), (UNITY_UINT)(49));
+     ), (UNITY_UINT)(50));
 
       UnityAssertEqualString((const char*)((T[7])), (const char*)((C.Codes[7])), (
 
      ((void *)0)
 
-     ), (UNITY_UINT)(50));
+     ), (UNITY_UINT)(51));
 
    }
 
@@ -135,13 +135,11 @@ void test_Extract_Commands_Max_Line_Length(void)
 
 
 
-   strcpy(Test_Line,"linea de mas de max_line_length caracteres                                                                      ");
+   strcpy ( Test_Line,"linea de mas de max_line_length caracteres                                                                      " );
 
-   Give_Next_Line_CMockExpectAndReturn(61, Test_Line);
+   Give_Next_Line_CMockExpectAndReturn(62, Test_Line);
 
-
-
-   Ans=Extract_Commands(&C);
+   Ans=Extract_Commands ( &C );
 
    UnityAssertEqualNumber((UNITY_INT)((LINE_TOO_LONG)), (UNITY_INT)((Ans)), (("LINE_TOO_LONG")), (UNITY_UINT)(64), UNITY_DISPLAY_STYLE_INT);
 
@@ -161,15 +159,13 @@ void test_Extract_Commands_Max_Codes_Per_Line(void)
 
 
 
-   strcpy(Test_Line,"linea con muchos codigos en una sola linea este codigo y este otro y uno mas");
+   strcpy ( Test_Line,"linea con muchos codigos en una sola linea este codigo y este otro y uno mas" );
 
    Give_Next_Line_CMockExpectAndReturn(74, Test_Line);
 
+   Ans=Extract_Commands ( &C );
 
-
-   Ans=Extract_Commands(&C);
-
-   UnityAssertEqualNumber((UNITY_INT)((TOO_MANY_CODES)), (UNITY_INT)((Ans)), (("TOO_MANY_CODES")), (UNITY_UINT)(77), UNITY_DISPLAY_STYLE_INT);
+   UnityAssertEqualNumber((UNITY_INT)((TOO_MANY_CODES)), (UNITY_INT)((Ans)), (("TOO_MANY_CODES")), (UNITY_UINT)(76), UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -187,21 +183,19 @@ void test_Extract_Commands_Codes_Too_Long(void)
 
 
 
-   strcpy(Test_Line,"codigo muyyyyyyyyyyyyyyyyyyyyyyyyyyyyy largo");
+   strcpy ( Test_Line,"codigo muyyyyyyyyyyyyyyyyyyyyyyyyyyyyy largo" );
 
-   Give_Next_Line_CMockExpectAndReturn(87, Test_Line);
+   Give_Next_Line_CMockExpectAndReturn(86, Test_Line);
 
+   Ans=Extract_Commands ( &C );
 
-
-   Ans=Extract_Commands(&C);
-
-   UnityAssertEqualNumber((UNITY_INT)((CODE_TOO_LONG)), (UNITY_INT)((Ans)), (("CODE_TOO_LONG")), (UNITY_UINT)(90), UNITY_DISPLAY_STYLE_INT);
+   UnityAssertEqualNumber((UNITY_INT)((CODE_TOO_LONG)), (UNITY_INT)((Ans)), (("CODE_TOO_LONG")), (UNITY_UINT)(88), UNITY_DISPLAY_STYLE_INT);
 
 }
 
 
 
-void test_Extract_Info_Valid_Codes(void)
+void test_Info_Parser_Valid_Codes(void)
 
 {
 
@@ -213,50 +207,106 @@ void test_Extract_Info_Valid_Codes(void)
 
 
 
-   strcpy(Test_Line,"G0 X1 Y1 Z1");
+   strcpy ( Test_Line,"G0 X1 Y1 Z1" );
 
-   Give_Next_Line_CMockExpectAndReturn(100, Test_Line);
-
-   Ans=Extract_Commands ( &C );
-
-   Ans=Extract_Info ( &C );
-
-   UnityAssertEqualNumber((UNITY_INT)((G0_COMMAND)), (UNITY_INT)((Ans)), (("G1_COMMAND")), (UNITY_UINT)(103), UNITY_DISPLAY_STYLE_INT);
-
-
-
-   strcpy(Test_Line,"G1 X1 Y1 Z1");
-
-   Give_Next_Line_CMockExpectAndReturn(106, Test_Line);
+   Give_Next_Line_CMockExpectAndReturn(98, Test_Line);
 
    Ans=Extract_Commands ( &C );
 
-   Ans=Extract_Info ( &C );
+   Init_Info_Parser ( &C );
+
+   Ans=Info_Parser ( &C );
+
+   UnityAssertEqualNumber((UNITY_INT)((G0_COMMAND)), (UNITY_INT)((Ans)), (("G0_COMMAND")), (UNITY_UINT)(102), UNITY_DISPLAY_STYLE_INT);
+
+
+
+   strcpy ( Test_Line,"G1 X1 Y1 Z1" );
+
+   Give_Next_Line_CMockExpectAndReturn(105, Test_Line);
+
+   Ans=Extract_Commands ( &C );
+
+   Init_Info_Parser ( &C );
+
+   Ans=Info_Parser ( &C );
 
    UnityAssertEqualNumber((UNITY_INT)((G1_COMMAND)), (UNITY_INT)((Ans)), (("G1_COMMAND")), (UNITY_UINT)(109), UNITY_DISPLAY_STYLE_INT);
 
 
 
-   strcpy(Test_Line,"G3 X1 Y1 Z1");
+   strcpy ( Test_Line,"G3 X1 Y1 Z1" );
 
    Give_Next_Line_CMockExpectAndReturn(112, Test_Line);
 
    Ans=Extract_Commands ( &C );
 
-   Ans=Extract_Info ( &C );
+   Init_Info_Parser ( &C );
 
-   UnityAssertEqualNumber((UNITY_INT)((INVALID_COMMAND)), (UNITY_INT)((Ans)), (("INVALID_COMMAND")), (UNITY_UINT)(115), UNITY_DISPLAY_STYLE_INT);
+   Ans=Info_Parser ( &C );
+
+   UnityAssertEqualNumber((UNITY_INT)((INVALID_COMMAND)), (UNITY_INT)((Ans)), (("INVALID_COMMAND")), (UNITY_UINT)(116), UNITY_DISPLAY_STYLE_INT);
 
 
 
-   strcpy(Test_Line,"J0 X1 Y1 Z1");
+   strcpy ( Test_Line,"J0 X1 Y1 Z1" );
 
-   Give_Next_Line_CMockExpectAndReturn(118, Test_Line);
+   Give_Next_Line_CMockExpectAndReturn(119, Test_Line);
 
    Ans=Extract_Commands ( &C );
 
    Ans=Extract_Info ( &C );
 
-   UnityAssertEqualNumber((UNITY_INT)((INVALID_COMMAND)), (UNITY_INT)((Ans)), (("INVALID_COMMAND")), (UNITY_UINT)(121), UNITY_DISPLAY_STYLE_INT);
+   UnityAssertEqualNumber((UNITY_INT)((INVALID_COMMAND)), (UNITY_INT)((Ans)), (("INVALID_COMMAND")), (UNITY_UINT)(122), UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_Extract_Info(void)
+
+{
+
+   Codes_t C;
+
+   int8_t Ans;
+
+   char Test_Line[100];
+
+
+
+   strcpy ( Test_Line,"G0 X1.1 Y2.1 K-4.1234" );
+
+   Give_Next_Line_CMockExpectAndReturn(132, Test_Line);
+
+   Ans=Extract_Commands ( &C );
+
+   Ans=Extract_Info ( &C );
+
+   UnityAssertEqualNumber((UNITY_INT)((INVALID_XYZ)), (UNITY_INT)((Ans)), (("INVALID_XYZ")), (UNITY_UINT)(135), UNITY_DISPLAY_STYLE_INT);
+
+
+
+   strcpy ( Test_Line,"G0 X1.1 Y2.1 Z-4.1234" );
+
+   Give_Next_Line_CMockExpectAndReturn(138, Test_Line);
+
+   Ans=Extract_Commands ( &C );
+
+   Ans=Extract_Info ( &C );
+
+   UnityAssertEqualNumber((UNITY_INT)((VALID_XYZ)), (UNITY_INT)((Ans)), (("VALID_XYZ")), (UNITY_UINT)(141), UNITY_DISPLAY_STYLE_INT);
+
+   UnityAssertFloatsWithin((UNITY_FLOAT)((UNITY_FLOAT)((1.1)) * (UNITY_FLOAT)(0.00001f)), (UNITY_FLOAT)((UNITY_FLOAT)((1.1))), (UNITY_FLOAT)((UNITY_FLOAT)((C.Pos.X))), ((("Conversion X"))), (UNITY_UINT)((UNITY_UINT)(142)));
+
+   UnityAssertFloatsWithin((UNITY_FLOAT)((UNITY_FLOAT)((2.1)) * (UNITY_FLOAT)(0.00001f)), (UNITY_FLOAT)((UNITY_FLOAT)((2.1))), (UNITY_FLOAT)((UNITY_FLOAT)((C.Pos.Y))), ((("Conversion X"))), (UNITY_UINT)((UNITY_UINT)(143)));
+
+   UnityAssertFloatsWithin((UNITY_FLOAT)((UNITY_FLOAT)((-4.1234)) * (UNITY_FLOAT)(0.00001f)), (UNITY_FLOAT)((UNITY_FLOAT)((-4.1234))), (UNITY_FLOAT)((UNITY_FLOAT)((C.Pos.Z))), ((("Conversion X"))), (UNITY_UINT)((UNITY_UINT)(144)));
+
+
+
+
+
+
 
 }

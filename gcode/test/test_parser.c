@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "cmock.h"
 #include "unity.h"
@@ -57,11 +58,10 @@ void test_Extract_Commands_Max_Line_Length(void)
    int8_t     Ans;
    char Test_Line[MAX_LINE_LENGTH+100];
 
-   strcpy(Test_Line,"linea de mas de max_line_length caracteres                                                                      ");
-   Give_Next_Line_ExpectAndReturn ( Test_Line );
-
-   Ans=Extract_Commands(&C);
-   TEST_ASSERT_EQUAL_MESSAGE(LINE_TOO_LONG  ,Ans ,"LINE_TOO_LONG");
+   strcpy                         ( Test_Line,"linea de mas de max_line_length caracteres                                                                      " );
+   Give_Next_Line_ExpectAndReturn ( Test_Line                                                                                                                    );
+   Ans=Extract_Commands           ( &C                                                                                                                           );
+   TEST_ASSERT_EQUAL_MESSAGE      ( LINE_TOO_LONG  ,Ans ,"LINE_TOO_LONG"                                                                                         );
 }
 
 void test_Extract_Commands_Max_Codes_Per_Line(void)
@@ -70,11 +70,10 @@ void test_Extract_Commands_Max_Codes_Per_Line(void)
    int8_t     Ans;
    char Test_Line[MAX_LINE_LENGTH+100];
 
-   strcpy(Test_Line,"linea con muchos codigos en una sola linea este codigo y este otro y uno mas");
-   Give_Next_Line_ExpectAndReturn ( Test_Line );
-
-   Ans=Extract_Commands(&C);
-   TEST_ASSERT_EQUAL_MESSAGE(TOO_MANY_CODES ,Ans ,"TOO_MANY_CODES");
+   strcpy                         ( Test_Line,"linea con muchos codigos en una sola linea este codigo y este otro y uno mas" );
+   Give_Next_Line_ExpectAndReturn ( Test_Line                                                                                );
+   Ans=Extract_Commands           ( &C                                                                                       );
+   TEST_ASSERT_EQUAL_MESSAGE      ( TOO_MANY_CODES ,Ans ,"TOO_MANY_CODES"                                                    );
 }
 
 void test_Extract_Commands_Codes_Too_Long(void)
@@ -83,41 +82,67 @@ void test_Extract_Commands_Codes_Too_Long(void)
    int8_t     Ans;
    char Test_Line[MAX_LINE_LENGTH+100];
 
-   strcpy(Test_Line,"codigo muyyyyyyyyyyyyyyyyyyyyyyyyyyyyy largo");
-   Give_Next_Line_ExpectAndReturn ( Test_Line );
-
-   Ans=Extract_Commands(&C);
-   TEST_ASSERT_EQUAL_MESSAGE(CODE_TOO_LONG  ,Ans ,"CODE_TOO_LONG");
+   strcpy                         ( Test_Line,"codigo muyyyyyyyyyyyyyyyyyyyyyyyyyyyyy largo" );
+   Give_Next_Line_ExpectAndReturn ( Test_Line                                                );
+   Ans=Extract_Commands           ( &C                                                       );
+   TEST_ASSERT_EQUAL_MESSAGE      ( CODE_TOO_LONG  ,Ans ,"CODE_TOO_LONG"                     );
 }
 
-void test_Extract_Info_Valid_Codes(void)
+void test_Info_Parser_Valid_Codes(void)
 {
    Codes_t  C;
    int8_t   Ans;
    char Test_Line[MAX_LINE_LENGTH];
 
-   strcpy(Test_Line,"G0 X1 Y1 Z1");
-   Give_Next_Line_ExpectAndReturn ( Test_Line );
-   Ans=Extract_Commands ( &C );
-   Ans=Extract_Info     ( &C );
-   TEST_ASSERT_EQUAL_MESSAGE ( G0_COMMAND ,Ans ,"G1_COMMAND" );
+   strcpy                         ( Test_Line,"G0 X1 Y1 Z1"       );
+   Give_Next_Line_ExpectAndReturn ( Test_Line                     );
+   Ans=Extract_Commands           ( &C                            );
+   Init_Info_Parser               ( &C                            );
+   Ans=Info_Parser                ( &C                            );
+   TEST_ASSERT_EQUAL_MESSAGE      ( G0_COMMAND ,Ans ,"G0_COMMAND" );
 
-   strcpy(Test_Line,"G1 X1 Y1 Z1");
-   Give_Next_Line_ExpectAndReturn ( Test_Line );
-   Ans=Extract_Commands ( &C );
-   Ans=Extract_Info     ( &C );
-   TEST_ASSERT_EQUAL_MESSAGE ( G1_COMMAND ,Ans ,"G1_COMMAND" );
+   strcpy                         ( Test_Line,"G1 X1 Y1 Z1"       );
+   Give_Next_Line_ExpectAndReturn ( Test_Line                     );
+   Ans=Extract_Commands           ( &C                            );
+   Init_Info_Parser               ( &C                            );
+   Ans=Info_Parser                ( &C                            );
+   TEST_ASSERT_EQUAL_MESSAGE      ( G1_COMMAND ,Ans ,"G1_COMMAND" );
 
-   strcpy(Test_Line,"G3 X1 Y1 Z1");
-   Give_Next_Line_ExpectAndReturn ( Test_Line );
-   Ans=Extract_Commands ( &C );
-   Ans=Extract_Info     ( &C );
-   TEST_ASSERT_EQUAL_MESSAGE ( INVALID_COMMAND ,Ans ,"INVALID_COMMAND" );
+   strcpy                         ( Test_Line,"G3 X1 Y1 Z1"                 );
+   Give_Next_Line_ExpectAndReturn ( Test_Line                               );
+   Ans=Extract_Commands           ( &C                                      );
+   Init_Info_Parser               ( &C                                      );
+   Ans=Info_Parser                ( &C                                      );
+   TEST_ASSERT_EQUAL_MESSAGE      ( INVALID_COMMAND ,Ans ,"INVALID_COMMAND" );
 
-   strcpy(Test_Line,"J0 X1 Y1 Z1");
-   Give_Next_Line_ExpectAndReturn ( Test_Line );
-   Ans=Extract_Commands ( &C );
-   Ans=Extract_Info     ( &C );
-   TEST_ASSERT_EQUAL_MESSAGE ( INVALID_COMMAND ,Ans ,"INVALID_COMMAND" );
+   strcpy                         ( Test_Line,"J0 X1 Y1 Z1"                 );
+   Give_Next_Line_ExpectAndReturn ( Test_Line                               );
+   Ans=Extract_Commands           ( &C                                      );
+   Ans=Extract_Info               ( &C                                      );
+   TEST_ASSERT_EQUAL_MESSAGE      ( INVALID_COMMAND ,Ans ,"INVALID_COMMAND" );
 }
 
+void test_Extract_Info(void)
+{
+   Codes_t  C;
+   int8_t   Ans;
+   char Test_Line[MAX_LINE_LENGTH];
+
+   strcpy                         ( Test_Line,"G0 X1.1 Y2.1 K-4.1234" );
+   Give_Next_Line_ExpectAndReturn ( Test_Line                         );
+   Ans=Extract_Commands           ( &C                                );
+   Ans=Extract_Info               ( &C                                );
+   TEST_ASSERT_EQUAL_MESSAGE      ( INVALID_XYZ ,Ans ,"INVALID_XYZ"   );
+
+   strcpy                          ( Test_Line,"G0 X1.1 Y2.1 Z-4.1234"  );
+   Give_Next_Line_ExpectAndReturn  ( Test_Line                          );
+   Ans=Extract_Commands            ( &C                                 );
+   Ans=Extract_Info                ( &C                                 );
+   TEST_ASSERT_EQUAL_MESSAGE       ( VALID_XYZ ,Ans     ,"VALID_XYZ"    );
+   TEST_ASSERT_EQUAL_FLOAT_MESSAGE ( 1.1       ,C.Pos.X ,"Conversion X" );
+   TEST_ASSERT_EQUAL_FLOAT_MESSAGE ( 2.1       ,C.Pos.Y ,"Conversion X" );
+   TEST_ASSERT_EQUAL_FLOAT_MESSAGE ( -4.1234   ,C.Pos.Z ,"Conversion X" );
+
+
+
+}

@@ -4,26 +4,29 @@
   :file: test_parser.c
 :successes:
 - :test: test_Extract_Commands_Vector
-  :line: 20
+  :line: 21
   :message: ''
 - :test: test_Extract_Commands_Max_Line_Length
-  :line: 54
+  :line: 55
   :message: ''
 - :test: test_Extract_Commands_Max_Codes_Per_Line
   :line: 67
   :message: ''
 - :test: test_Extract_Commands_Codes_Too_Long
-  :line: 80
+  :line: 79
   :message: ''
-- :test: test_Extract_Info_Valid_Codes
-  :line: 93
+- :test: test_Info_Parser_Valid_Codes
+  :line: 91
+  :message: ''
+- :test: test_Extract_Info
+  :line: 125
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 5
-  :passed: 5
+  :total: 6
+  :passed: 6
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.0013255429948912933
+:time: 0.0015939279983285815

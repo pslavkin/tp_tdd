@@ -45,7 +45,8 @@ extern void test_Extract_Commands_Vector(void);
 extern void test_Extract_Commands_Max_Line_Length(void);
 extern void test_Extract_Commands_Max_Codes_Per_Line(void);
 extern void test_Extract_Commands_Codes_Too_Long(void);
-extern void test_Extract_Info_Valid_Codes(void);
+extern void test_Info_Parser_Valid_Codes(void);
+extern void test_Extract_Info(void);
 
 
 /*=======Mock Management=====*/
@@ -100,11 +101,12 @@ int main(void)
 {
   suite_setup();
   UnityBegin("test_parser.c");
-  RUN_TEST(test_Extract_Commands_Vector, 20);
-  RUN_TEST(test_Extract_Commands_Max_Line_Length, 54);
+  RUN_TEST(test_Extract_Commands_Vector, 21);
+  RUN_TEST(test_Extract_Commands_Max_Line_Length, 55);
   RUN_TEST(test_Extract_Commands_Max_Codes_Per_Line, 67);
-  RUN_TEST(test_Extract_Commands_Codes_Too_Long, 80);
-  RUN_TEST(test_Extract_Info_Valid_Codes, 93);
+  RUN_TEST(test_Extract_Commands_Codes_Too_Long, 79);
+  RUN_TEST(test_Info_Parser_Valid_Codes, 91);
+  RUN_TEST(test_Extract_Info, 125);
 
   CMock_Guts_MemFreeFinal();
   return suite_teardown(UnityEnd());
