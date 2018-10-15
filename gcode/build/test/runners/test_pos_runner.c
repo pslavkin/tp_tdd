@@ -70,7 +70,7 @@ int main(void)
 {
   suite_setup();
   UnityBegin("test_pos.c");
-  RUN_TEST(test_Pos_Reset_At_Init, 12);
+  RUN_TEST(test_Pos_Reset_At_Init, 16);
 
   return suite_teardown(UnityEnd());
 }

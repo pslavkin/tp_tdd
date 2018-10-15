@@ -1,3 +1,7 @@
+#include <unistd.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include <stdio.h>
 #include "unity.h"
 #include "pos.h"
 

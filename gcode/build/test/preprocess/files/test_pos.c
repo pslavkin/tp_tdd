@@ -29,18 +29,18 @@ void test_Pos_Reset_At_Init(void)
 
    ((void *)0)
 
-   )), (UNITY_UINT)((UNITY_UINT)(15)));
+   )), (UNITY_UINT)((UNITY_UINT)(19)));
 
     UnityAssertFloatsWithin((UNITY_FLOAT)((UNITY_FLOAT)((Pos.Y)) * (UNITY_FLOAT)(0.00001f)), (UNITY_FLOAT)((UNITY_FLOAT)((Pos.Y))), (UNITY_FLOAT)((UNITY_FLOAT)((0))), ((
 
    ((void *)0)
 
-   )), (UNITY_UINT)((UNITY_UINT)(16)));
+   )), (UNITY_UINT)((UNITY_UINT)(20)));
 
     UnityAssertFloatsWithin((UNITY_FLOAT)((UNITY_FLOAT)((Pos.Z)) * (UNITY_FLOAT)(0.00001f)), (UNITY_FLOAT)((UNITY_FLOAT)((Pos.Z))), (UNITY_FLOAT)((UNITY_FLOAT)((0))), ((
 
    ((void *)0)
 
-   )), (UNITY_UINT)((UNITY_UINT)(17)));
+   )), (UNITY_UINT)((UNITY_UINT)(21)));
 
 }
