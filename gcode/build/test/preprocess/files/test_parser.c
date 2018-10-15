@@ -143,13 +143,7 @@ void test_Extract_Commands_Max_Line_Length(void)
 
    Ans=Extract_Commands(&C);
 
-   if (((TOO_MANY_CODES) != (Ans))) {} else {UnityFail( ((("TOO_MANY_CODES"))), (UNITY_UINT)((UNITY_UINT)(64)));};
-
-   if (((CODE_TOO_LONG) != (Ans))) {} else {UnityFail( ((("CODE_TOO_LONG"))), (UNITY_UINT)((UNITY_UINT)(65)));};
-
-   if (((LINE_TOO_LONG) != (Ans))) {} else {UnityFail( ((("LINE_TOO_LONG"))), (UNITY_UINT)((UNITY_UINT)(66)));};
-
-   if (((LINE_END) != (Ans))) {} else {UnityFail( ((("LINE_END"))), (UNITY_UINT)((UNITY_UINT)(67)));};
+   UnityAssertEqualNumber((UNITY_INT)((LINE_TOO_LONG)), (UNITY_INT)((Ans)), (("LINE_TOO_LONG")), (UNITY_UINT)(64), UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -169,19 +163,13 @@ void test_Extract_Commands_Max_Codes_Per_Line(void)
 
    strcpy(Test_Line,"linea con muchos codigos en una sola linea este codigo y este otro y uno mas");
 
-   Give_Next_Line_CMockExpectAndReturn(77, Test_Line);
+   Give_Next_Line_CMockExpectAndReturn(74, Test_Line);
 
 
 
    Ans=Extract_Commands(&C);
 
-   if (((TOO_MANY_CODES) != (Ans))) {} else {UnityFail( ((("TOO_MANY_CODES"))), (UNITY_UINT)((UNITY_UINT)(80)));};
-
-   if (((CODE_TOO_LONG) != (Ans))) {} else {UnityFail( ((("CODE_TOO_LONG"))), (UNITY_UINT)((UNITY_UINT)(81)));};
-
-   if (((LINE_TOO_LONG) != (Ans))) {} else {UnityFail( ((("LINE_TOO_LONG"))), (UNITY_UINT)((UNITY_UINT)(82)));};
-
-   if (((LINE_END) != (Ans))) {} else {UnityFail( ((("LINE_END"))), (UNITY_UINT)((UNITY_UINT)(83)));};
+   UnityAssertEqualNumber((UNITY_INT)((TOO_MANY_CODES)), (UNITY_INT)((Ans)), (("TOO_MANY_CODES")), (UNITY_UINT)(77), UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -201,18 +189,74 @@ void test_Extract_Commands_Codes_Too_Long(void)
 
    strcpy(Test_Line,"codigo muyyyyyyyyyyyyyyyyyyyyyyyyyyyyy largo");
 
-   Give_Next_Line_CMockExpectAndReturn(93, Test_Line);
+   Give_Next_Line_CMockExpectAndReturn(87, Test_Line);
 
 
 
    Ans=Extract_Commands(&C);
 
-   if (((TOO_MANY_CODES) != (Ans))) {} else {UnityFail( ((("TOO_MANY_CODES"))), (UNITY_UINT)((UNITY_UINT)(96)));};
+   UnityAssertEqualNumber((UNITY_INT)((CODE_TOO_LONG)), (UNITY_INT)((Ans)), (("CODE_TOO_LONG")), (UNITY_UINT)(90), UNITY_DISPLAY_STYLE_INT);
 
-   if (((CODE_TOO_LONG) != (Ans))) {} else {UnityFail( ((("CODE_TOO_LONG"))), (UNITY_UINT)((UNITY_UINT)(97)));};
+}
 
-   if (((LINE_TOO_LONG) != (Ans))) {} else {UnityFail( ((("LINE_TOO_LONG"))), (UNITY_UINT)((UNITY_UINT)(98)));};
 
-   if (((LINE_END) != (Ans))) {} else {UnityFail( ((("LINE_END"))), (UNITY_UINT)((UNITY_UINT)(99)));};
+
+void test_Extract_Info_Valid_Codes(void)
+
+{
+
+   Codes_t C;
+
+   int8_t Ans;
+
+   char Test_Line[100];
+
+
+
+   strcpy(Test_Line,"G0 X1 Y1 Z1");
+
+   Give_Next_Line_CMockExpectAndReturn(100, Test_Line);
+
+   Ans=Extract_Commands ( &C );
+
+   Ans=Extract_Info ( &C );
+
+   UnityAssertEqualNumber((UNITY_INT)((G0_COMMAND)), (UNITY_INT)((Ans)), (("G1_COMMAND")), (UNITY_UINT)(103), UNITY_DISPLAY_STYLE_INT);
+
+
+
+   strcpy(Test_Line,"G1 X1 Y1 Z1");
+
+   Give_Next_Line_CMockExpectAndReturn(106, Test_Line);
+
+   Ans=Extract_Commands ( &C );
+
+   Ans=Extract_Info ( &C );
+
+   UnityAssertEqualNumber((UNITY_INT)((G1_COMMAND)), (UNITY_INT)((Ans)), (("G1_COMMAND")), (UNITY_UINT)(109), UNITY_DISPLAY_STYLE_INT);
+
+
+
+   strcpy(Test_Line,"G3 X1 Y1 Z1");
+
+   Give_Next_Line_CMockExpectAndReturn(112, Test_Line);
+
+   Ans=Extract_Commands ( &C );
+
+   Ans=Extract_Info ( &C );
+
+   UnityAssertEqualNumber((UNITY_INT)((INVALID_COMMAND)), (UNITY_INT)((Ans)), (("INVALID_COMMAND")), (UNITY_UINT)(115), UNITY_DISPLAY_STYLE_INT);
+
+
+
+   strcpy(Test_Line,"J0 X1 Y1 Z1");
+
+   Give_Next_Line_CMockExpectAndReturn(118, Test_Line);
+
+   Ans=Extract_Commands ( &C );
+
+   Ans=Extract_Info ( &C );
+
+   UnityAssertEqualNumber((UNITY_INT)((INVALID_COMMAND)), (UNITY_INT)((Ans)), (("INVALID_COMMAND")), (UNITY_UINT)(121), UNITY_DISPLAY_STYLE_INT);
 
 }

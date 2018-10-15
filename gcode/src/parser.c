@@ -14,12 +14,14 @@ int8_t Extract_Commands(Codes_t* C)
    Init_Parser ( C,L );
    while((Ans=Parse_Byte(C))==0)
       ;
+   C->Code_Count = C->Code_Index;
    return Ans;
 }
 
 int8_t Init_Parser(Codes_t* C,char* L)
 {
    C->Code_Index = 0;
+   C->Code_Count = 0;
    C->S          = SKIPING;
    C->L          = L;
    C->L_Index    = 0;
@@ -98,6 +100,50 @@ int8_t Parse_Byte(Codes_t* C)
                   Ans=CODE_TOO_LONG;
                break;
          }
+   }
+   return Ans;
+}
+
+int8_t Extract_Info(Codes_t* C)
+{
+   int8_t   Ans;
+   Init_Info_Parser ( C );
+   while((Ans=Info_Parser(C))==EMPTY_COMMAND)
+      ;
+   return Ans;
+}
+
+void Init_Info_Parser(Codes_t* C)
+{
+   C->Code_Index = 0;
+   C->C_Index    = 0;
+}
+
+int8_t Info_Parser(Codes_t* C)
+{
+   int8_t Ans=EMPTY_COMMAND;
+   char B=C->Codes[C->Code_Index][C->C_Index];
+   switch(B) {
+      case 'G':
+         C->C_Index++;
+         B=C->Codes[C->Code_Index][C->C_Index];
+         switch(B) {
+            case '0':
+               C->Code_Index++;
+               Ans=G0_COMMAND;
+               break;
+            case '1':
+               C->Code_Index++;
+               Ans=G1_COMMAND;
+               break;
+            default:
+               Ans=INVALID_COMMAND;
+               break;
+         }
+         break;
+      default:
+         Ans=INVALID_COMMAND;
+         break;
    }
    return Ans;
 }

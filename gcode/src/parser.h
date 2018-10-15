@@ -9,12 +9,19 @@
 #define MAX_CODES_PER_LINE 10
 #define MAX_CODE_LENGTH    20
 
+enum COMMAND_CODES
+{
+   EMPTY_COMMAND = 0 ,
+   G0_COMMAND        ,
+   G1_COMMAND        ,
+   INVALID_COMMAND
+};
 enum ERROR_CODES
 {
    TOO_MANY_CODES = -10 ,
    CODE_TOO_LONG        ,
    LINE_TOO_LONG        ,
-   LINE_END
+   LINE_END             ,
 };
 typedef enum {
    SKIPING=0,
@@ -25,6 +32,7 @@ typedef struct {
    char     Codes[MAX_CODES_PER_LINE][MAX_CODE_LENGTH];
    uint16_t C_Index   ;
    uint8_t  Code_Index;
+   uint8_t  Code_Count;
    char*    L         ;
    uint16_t L_Index   ;
    Parser_State_e S;
@@ -33,5 +41,8 @@ typedef struct {
 int8_t   Extract_Commands ( Codes_t* C         );
 int8_t   Init_Parser      ( Codes_t* C,char* L );
 int8_t   Parse_Byte       ( Codes_t* C         );
+int8_t   Extract_Info     ( Codes_t* C         );
+void     Init_Info_Parser ( Codes_t* C         );
+int8_t   Info_Parser      ( Codes_t* C         );
 
 #endif // _PARSER_H

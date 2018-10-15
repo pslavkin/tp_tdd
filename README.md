@@ -11,7 +11,7 @@ Lista de requerimientos a probar:
 |X| 3) Cada código dentro de la linea estará separado por uno o mas espacios
 |X| 4) El largo de los códigos no podrá superar MAX_CODE_LENGTH
 |X| 5) Una linea no podrá tener mas de MAX_CODES_PER_LINE códigos.
-|_| 6) Los comandos posibles serán G0 y G1
+|X| 6) Los comandos posibles serán G0 y G1
 |_| 7) Los codigos posibles serán X, Y y Z
 |_| 8) Los valores numéricos recibidos como parámetros deberán estar en el rango de MIN_PARAM_VALUE a MAX_PARAM_VALUE pudiendo ser enteros o de punto flotante
 |_| 9) Aquella linea invalidada por alguna causa, será descartada y no se tendrá en cuenta.
