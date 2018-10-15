@@ -39,6 +39,44 @@ y el restultado es:
    Command=1 X=0.000000 Y=1.100000 Z=0.000000 
 
 
+Reporte de la ultima ejecucio de ceedling y gcov
+------------------------------------------------------
+
+Test 'test_parser.c'
+--------------------
+Running test_parser.out...
+
+
+Test 'test_pos.c'
+-----------------
+Running test_pos.out...
+
+
+Test 'test_uart.c'
+------------------
+Running test_uart.out...
+
+--------------------------
+GCOV: OVERALL TEST SUMMARY
+--------------------------
+TESTED:  9
+PASSED:  9
+FAILED:  0
+IGNORED: 0
+
+
+---------------------------
+GCOV: CODE COVERAGE SUMMARY
+---------------------------
+pos.c Lines executed:100.00% of 12
+pos.c Branches executed:100.00% of 10
+pos.c Taken at least once:100.00% of 10
+pos.c Calls executed:100.00% of 3
+
+parser.c Lines executed:98.36% of 122
+parser.c Branches executed:100.00% of 42
+parser.c Taken at least once:92.86% of 42
+parser.c Calls executed:100.00% of 15
 
 
 

@@ -1,0 +1,24 @@
+
+
+Test 'test_parser.c'
+--------------------
+Running test_parser.out...
+
+
+Test 'test_pos.c'
+-----------------
+Running test_pos.out...
+
+
+Test 'test_uart.c'
+------------------
+Running test_uart.out...
+
+--------------------
+OVERALL TEST SUMMARY
+--------------------
+TESTED:  9
+PASSED:  9
+FAILED:  0
+IGNORED: 0
+
