@@ -1,0 +1,4 @@
+syn keyword CTagsMember set_root_path run get_details usage parse_test_summary set_targets __init__
+syn keyword CTagsGlobalVariable uts targets
+syn keyword CTagsClass UnityTestSummary
+

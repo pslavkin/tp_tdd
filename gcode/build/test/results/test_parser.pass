@@ -10,16 +10,16 @@
   :line: 56
   :message: ''
 - :test: test_Extract_Commands_Max_Codes_Per_Line
-  :line: 68
+  :line: 66
   :message: ''
 - :test: test_Extract_Commands_Codes_Too_Long
-  :line: 80
+  :line: 76
   :message: ''
 - :test: test_Info_Parser_Valid_Codes
-  :line: 92
+  :line: 86
   :message: ''
 - :test: test_Extract_Info
-  :line: 126
+  :line: 110
   :message: ''
 :failures: []
 :ignores: []
@@ -29,4 +29,4 @@
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.001349002995993942
+:time: 0.001324285000009695
